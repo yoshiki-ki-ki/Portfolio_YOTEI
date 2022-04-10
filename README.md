@@ -21,7 +21,7 @@
 とりあえず日程を決めようというときに活用できます。
 
 ## 設計書
-ER図
+ER図<br>
 <https://drive.google.com/file/d/1AfgD_DQd4GYQMbl9yPPL-KP16j0WtPYJ/view?usp=sharing><br>
 テーブル定義書<br>
 <https://docs.google.com/spreadsheets/d/1i1L4EtRGhVZQy5NObJrPF6clt5i-ckBgA0lYa8cpJM8/edit?usp=sharing><br>
