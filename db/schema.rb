@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_10_120603) do
+ActiveRecord::Schema.define(version: 2022_04_10_121329) do
 
   create_table "event_schedules", force: :cascade do |t|
     t.integer "event_id", null: false
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 2022_04_10_120603) do
     t.text "comment", default: "", null: false
     t.datetime "decision_dete_start", null: false
     t.datetime "decision_dete_end", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "guests", force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.string "guest_name", default: "", null: false
+    t.string "password", default: "", null: false
+    t.text "comment_to_host", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
