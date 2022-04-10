@@ -1,0 +1,2 @@
+class EventSchedule < ApplicationRecord
+end
