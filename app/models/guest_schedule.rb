@@ -1,0 +1,2 @@
+class GuestSchedule < ApplicationRecord
+end

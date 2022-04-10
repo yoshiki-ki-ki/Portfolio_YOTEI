@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_10_121329) do
+ActiveRecord::Schema.define(version: 2022_04_10_122053) do
 
   create_table "event_schedules", force: :cascade do |t|
     t.integer "event_id", null: false
@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(version: 2022_04_10_121329) do
     t.text "comment", default: "", null: false
     t.datetime "decision_dete_start", null: false
     t.datetime "decision_dete_end", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "guest_schedules", force: :cascade do |t|
+    t.integer "guest_id", null: false
+    t.integer "event_schedule_id", null: false
+    t.boolean "join_flag", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
