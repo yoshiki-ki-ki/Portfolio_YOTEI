@@ -1,0 +1,2 @@
+module Host::EventSchedulesHelper
+end
