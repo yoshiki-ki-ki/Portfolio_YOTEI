@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  root to: 'homes#top'
+  get '/manual' => 'homes#manual'
+  resources :schedules, only: [:show]
+  resources :schedule_answers, only: [:new, :create, :edit, :update, :destroy]
+  
   namespace :host do
     get 'events/new'
     post 'events/create'
