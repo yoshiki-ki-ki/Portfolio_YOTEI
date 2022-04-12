@@ -6,12 +6,16 @@ class Host::EventsController < ApplicationController
   end
 
   def create
+    @event = Event.new(event_params)
+    @event.host_id = current_host.id
+    @event.save
+    redirect_to post_images_path
   end
   
   private
 
   def event_params
-    params.require(:event).permit(:title, :schedule_time, :comment, :decision_date_start, :decision_date_end)
+    params.require(:event).permit(:title, :schedule_time, :comment, :candidate_date_start, :candidate_date_end)
   end
   
 end
