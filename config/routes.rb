@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     post '/events/event_cofirmation'
     resources :events, only: [:new, :create]
 
-    get '/host/event_schedules/:id/schedule_confirmation' => 'event_schedules#schedule_confirmation'
+    get '/event_schedules/:id/schedule_confirmation' => 'event_schedules#schedule_confirmation'
     resources :event_schedules, only: [:show, :update]
   end
 
