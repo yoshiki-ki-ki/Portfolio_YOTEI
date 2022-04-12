@@ -28,19 +28,19 @@
               <%= link_to "日程を決める", new_host_event_path, class: 'nav-link text-dark' %>
             </li>
             <% if host_signed_in? %>
-            <li class="nav-item">
-              <%= link_to 'マイページ', host_mypage(current_user.id), class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "ログアウト", destroy_host_session_path, method: :delete, class: 'nav-link text-dark' %>
+              <li class="nav-item">
+                <%= link_to 'マイページ', host_mypage_path(current_host.id), class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_host_session_path, method: :delete, class: 'nav-link text-dark' %>
             </li>
             <% else %>
-            <li class="nav-item">
-              <%= link_to "新規登録", new_host_registration_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "ログイン", new_host_session_path, class: 'nav-link text-dark' %>
-            </li>
+              <li class="nav-item">
+                <%= link_to "新規登録", new_host_registration_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログイン", new_host_session_path, class: 'nav-link text-dark' %>
+              </li>
             <% end %>
             </ul>
           </div>
