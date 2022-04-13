@@ -4,6 +4,10 @@ class Host::EventsController < ApplicationController
   def new
     @event = Event.new
   end
+  
+  def event_confirmation
+    @event = Event.new(event_params)
+  end
 
   def create
     @event = Event.new(event_params)
