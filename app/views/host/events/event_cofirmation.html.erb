@@ -1,5 +1,11 @@
 <div class="container">
   <div class="row">
     <h4>内容確認</h4>
+    <%= @event_info.title %>
+    <%= @event_info.schedule_time %>
+    <%= @event_info.comment %>
+    <!--each文で記載する必要あり　↓　-->
+    <%= @event_info.event_schedules.candidate_date_start %>
+    <%= @event_info.event_schedules.candidate_date_end %>
   </div>
 </div>
