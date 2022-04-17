@@ -1,6 +1,12 @@
 <div class="container">
   <div class="row">
     <h4>内容確認</h4>
-
+    <div><%= @event.title %></div>
+    <div><%= @event.schedule_time %></div>
+    <div><%= @event.comment %></div>
+    <% @event.event_schedules.each do |event_schedule| %>
+      <div><%= event_schedule.candidate_date_start %></div>
+      <div><%= event_schedule.candidate_date_end %></div>
+    <% end %>
   </div>
 </div>
