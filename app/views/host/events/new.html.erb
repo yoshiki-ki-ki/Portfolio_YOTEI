@@ -13,18 +13,37 @@
           <%= f.label :コメント, class: "mr-5" %>
           <%= f.text_area :comment, placeholder: "##:##に○○駅に集合", class: "mr-5" %>
         </div>
+        
         <div class="form-group">
-          <% @event.event_schedules.each_with_index do |_,index| %>
-            <div>
-              <%= f.fields_for "event_schedules[#{index}]" do |i| %>
-                <%# この中身は1回表示(fileの選択ボタンが1個でる) %>
-                <%= i.label :候補日, class: "mr-5" %>
-                <%= i.datetime_field :candidate_date_start, placeholder: "候補日" %>
-                <%= "～" %>
-                <%= i.time_field :candidate_date_end, placeholder: "候補日", class: "mr-5" %>
+          <div class="recipe-ingredients">
+            <div class="mx-auto">
+              <%= f.fields_for :event_schedules do |event_schedule| %>
+                <%= render "event_schedule_fields", f: event_schedule %>
               <% end %>
             </div>
-          <% end %>
+            
+            <div id="detail-association-insertion-point"></div>
+            
+            <div class="col-10 mx-auto mt-2">
+              <%= link_to_add_association "+候補日を追加", f, :event_schedules,
+              class: "btn btn-secondary btn-block",
+              data: {
+              association_insertion_node: '#detail-association-insertion-point',
+              association_insertion_method: 'after'
+              }%>
+            </div>
+          </div>
+          <%# @event.event_schedules.each_with_index do |_,index| %>
+            <!--<div>-->
+              <%#= f.fields_for "event_schedules[#{index}]" do |i| %>
+                <%# この中身は1回表示(fileの選択ボタンが1個でる) %>
+                <%#= i.label :候補日, class: "mr-5" %>
+                <%#= i.datetime_field :candidate_date_start, placeholder: "候補日" %>
+                <%#= "～" %>
+                <%#= i.time_field :candidate_date_end, placeholder: "候補日", class: "mr-5" %>
+              <%# end %>
+            <!--</div>-->
+          <%# end %>
         </div>
         <%= f.submit '内容を確認', class: "btn btn-success" %>
       <% end %>
