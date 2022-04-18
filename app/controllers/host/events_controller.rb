@@ -15,7 +15,7 @@ class Host::EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.host_id = current_host.id
     @event.save
-    redirect_to post_images_path
+    redirect_to schedule_path(event_params)
   end
 
   private

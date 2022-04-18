@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get '/manual' => 'homes#manual'
   
-  resources :schedules, only: [:show]
+  get '/schedules/:event_id' => 'schedules#show' , as: 'schedule'
   resources :schedule_answers, only: [:new, :create, :edit, :update, :destroy]
 
   namespace :host do

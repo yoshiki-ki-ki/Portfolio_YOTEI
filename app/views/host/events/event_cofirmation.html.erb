@@ -5,8 +5,22 @@
     <div><%= @event.schedule_time %></div>
     <div><%= @event.comment %></div>
     <% @event.event_schedules.each do |event_schedule| %>
-      <div><%= event_schedule.candidate_date_start %></div>
-      <div><%= event_schedule.candidate_date_end %></div>
+      <div><%= event_schedule.candidate_date_start.strftime('%Y/%m/%d %H:%M') %></div>
+      <p>～</p>
+      <div><%= event_schedule.candidate_date_end.strftime('%H:%M') %></div>
+    <% end %>
+
+    <%= form_with model:@event, url: host_events_path, method: :post do |f| %>
+      <%= f.hidden_field :title %>
+      <%= f.hidden_field :schedule %>
+      <%= f.hidden_field :comment %>
+
+      <% @event.event_schedules.each do |event_schedule| %>
+        <%= f.hidden_field :candidate_date_start %>
+        <%= f.hidden_field :candidate_date_end %>
+      <% end %>
+
+      <%= f.submit "イベントを登録", class:"btn btn-success" %>
     <% end %>
   </div>
 </div>
