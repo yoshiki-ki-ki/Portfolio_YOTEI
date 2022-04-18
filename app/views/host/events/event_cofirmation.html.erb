@@ -14,12 +14,12 @@
       <%= f.hidden_field :title %>
       <%= f.hidden_field :schedule %>
       <%= f.hidden_field :comment %>
-
-      <% @event.event_schedules.each do |event_schedule| %>
-        <%= f.hidden_field :candidate_date_start %>
-        <%= f.hidden_field :candidate_date_end %>
+      <%= f.fields_for :event_schedules do |event_schedule| %>
+        <% @event.event_schedules.each do |t| %>
+          <%= f.hidden_field :candidate_date_start %>
+          <%= f.hidden_field :candidate_date_end %>
+        <% end %>
       <% end %>
-
       <%= f.submit "イベントを登録", class:"btn btn-success" %>
     <% end %>
   </div>
