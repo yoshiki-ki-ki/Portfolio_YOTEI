@@ -30,17 +30,6 @@
           association_insertion_node: '#detail-association-insertion-point'
           }%>
         </div>
-        <%# @event.event_schedules.each_with_index do |_,index| %>
-          <!--<div>-->
-            <%#= f.fields_for "event_schedules[#{index}]" do |i| %>
-              <%# この中身は1回表示(fileの選択ボタンが1個でる) %>
-              <%#= i.label :候補日, class: "mr-5" %>
-              <%#= i.datetime_field :candidate_date_start, placeholder: "候補日" %>
-              <%#= "～" %>
-              <%#= i.time_field :candidate_date_end, placeholder: "候補日", class: "mr-5" %>
-            <%# end %>
-          <!--</div>-->
-        <%# end %>
       </div>
       <%= f.submit '内容を確認', class: "btn btn-success" %>
     <% end %>
