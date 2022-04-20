@@ -11,13 +11,19 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>2022/04/12 20:19</td>
-          <td>飲み会</td>
-          <td>4時間</td>
-          <td>04/23 17:00~21:00</td>
-          <td>5</td>
-        </tr>
+        <% @event.each do |event| %>
+          <tr>
+            <td><%= event.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+            <td>
+              <%= link_to schedule_path(event.id) do %>
+                <%= event.title %>
+              <% end %>
+            </td>
+            <td><%= event.schedule_time %></td>
+            <td><%= event.decision_date_start %>～<%= event.decision_date_end %></td>
+            <td><%= event.guests.count %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
