@@ -1,2 +1,9 @@
-<h1>ScheduleAnswers#new</h1>
-<p>Find me in app/views/schedule_answers/new.html.erb</p>
+<h4>参加可否の入力</h4>
+
+<% @event.event_schedules.each do |event_schedule| %>
+  <div>
+    <%= event_schedule.candidate_date_start.strftime('%Y/%m/%d %H:%M') %>
+    ～
+    <%= event_schedule.candidate_date_end.strftime('%H:%M') %>
+  </div>
+<% end %>

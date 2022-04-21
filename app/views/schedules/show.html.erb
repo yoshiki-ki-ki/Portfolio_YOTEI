@@ -7,3 +7,4 @@
       <p>～</p>
       <div><%= event_schedule.candidate_date_end.strftime('%H:%M') %></div>
     <% end %>
+    <%= link_to "参加可否を入力する",new_schedule_answer_path, class: "btn btn-success" %>
