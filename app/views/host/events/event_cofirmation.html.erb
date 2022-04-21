@@ -5,9 +5,11 @@
     <div><%= @event.schedule_time %></div>
     <div><%= @event.comment %></div>
     <% @event.event_schedules.each do |event_schedule| %>
-      <div><%= event_schedule.candidate_date_start.strftime('%Y/%m/%d %H:%M') %></div>
-      <p>～</p>
-      <div><%= event_schedule.candidate_date_end.strftime('%H:%M') %></div>
+      <div>
+        <%= event_schedule.candidate_date_start.strftime('%Y/%m/%d %H:%M') %>
+        ～
+        <%= event_schedule.candidate_date_end.strftime('%H:%M') %>
+      </div>
     <% end %>
 
     <%= form_with model:@event, url: host_events_path, method: :post do |f| %>
