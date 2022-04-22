@@ -1,0 +1,11 @@
+<h4>回答内容の確認</h4>
+
+<%= form_with model: @guest, url: create_schedule_answer_path, method: :post do |f| %>
+  <%= f.hidden_field :guest_name %>
+  <%= f.hidden_field :comment_to_host %>
+  <%= f.hidden_field :password %>
+    <%= f.fields_for :guest_schedules do |i| %>
+      <%= i.hidden_field :join_flag %>
+    <% end %>
+  <%= f.submit '回答', class: "btn btn-success" %>
+<% end %>

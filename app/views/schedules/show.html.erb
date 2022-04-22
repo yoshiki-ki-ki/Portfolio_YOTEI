@@ -3,8 +3,10 @@
     <div><%= @event.schedule_time %></div>
     <div><%= @event.comment %></div>
     <% @event.event_schedules.each do |event_schedule| %>
-      <div><%= event_schedule.candidate_date_start.strftime('%Y/%m/%d %H:%M') %></div>
-      <p>～</p>
-      <div><%= event_schedule.candidate_date_end.strftime('%H:%M') %></div>
+      <div>
+        <%= event_schedule.candidate_date_start.strftime('%Y/%m/%d %H:%M') %>
+        ～
+        <%= event_schedule.candidate_date_end.strftime('%H:%M') %>
+      </div>
     <% end %>
     <%= link_to "参加可否を入力する",new_schedule_answer_path, class: "btn btn-success" %>

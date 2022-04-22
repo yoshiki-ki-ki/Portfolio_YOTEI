@@ -1,9 +1,30 @@
 <h4>参加可否の入力</h4>
 
-<% @event.event_schedules.each do |event_schedule| %>
+<%= form_with model: @guest, url: answer_confirmation_schedule_answer_path, method: :post do |f| %>
   <div>
-    <%= event_schedule.candidate_date_start.strftime('%Y/%m/%d %H:%M') %>
-    ～
-    <%= event_schedule.candidate_date_end.strftime('%H:%M') %>
+    <% @event.event_schedules.each_with_index do |event_schedule,index| %>
+      <div>
+        <%= event_schedule.candidate_date_start.strftime('%Y/%m/%d %H:%M') %>
+        ～
+        <%= event_schedule.candidate_date_end.strftime('%H:%M') %>
+        <%= f.fields_for "guest_schedules[#{index}]" do |i| %>
+          <%= i.radio_button :join_flag, true %>〇
+          <%= i.radio_button :join_flag, false %>×
+        <% end %>
+      </div>
+    <% end %>
   </div>
+  <div class="form-group">
+    <%= f.label :ニックネーム, class: "mr-5" %>
+    <%= f.text_field :guest_name, placeholder: "", class: "mr-5" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :主催者へのコメント, class: "mr-5" %>
+    <%= f.text_field :comment_to_host, placeholder: "", class: "mr-5" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :パスワード, class: "mr-5" %>
+    <%= f.text_field :password, placeholder: "", class: "mr-5" %>
+  </div>
+  <%= f.submit '回答を確認', class: "btn btn-success" %>
 <% end %>
