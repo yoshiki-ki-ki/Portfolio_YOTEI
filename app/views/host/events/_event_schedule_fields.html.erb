@@ -1,9 +1,13 @@
 <div class="nested-fields">
   <div class="row mx-auto">
-    <div class="col-6"><%= f.datetime_field :candidate_date_start, min: Date.today, class: "form-control", placeholder: "開始日時" %></div>
+    <div class="col-xs-6 mx-3">
+      <%= f.datetime_field :candidate_date_start, min: Date.today, class: "form-control", placeholder: "開始日時" %>
+    </div>
     ～
-    <div class="col-4"><%= f.time_field :candidate_date_end, minute: 10, class: "form-control", placeholder: "終了時間" %></div>
-    <div class=" col-2 px-0 w-auto">
+    <div class="col-xs-4 mx-3">
+      <%= f.time_field :candidate_date_end, minute: 10, class: "form-control", placeholder: "終了時間" %>
+    </div>
+    <div class=" col-md-2 px-0 w-auto">
       <%= link_to_remove_association "削除", f, class: "btn btn-secondary btn-block" %>
     </div>
   </div>
