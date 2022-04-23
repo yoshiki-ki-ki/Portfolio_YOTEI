@@ -1,5 +1,5 @@
 class Host::HomesController < ApplicationController
   def index
-    @event = Event.all
+    @event = Event.page(params[:page]).order(created_at: :desc)
   end
 end

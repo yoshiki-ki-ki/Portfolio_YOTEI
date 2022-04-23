@@ -60,3 +60,6 @@ gem 'devise'
 
 # フォームの追加削除機能
 gem 'cocoon'
+
+# ページネーション機能
+gem 'kaminari','~> 1.2.1'
