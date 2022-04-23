@@ -4,8 +4,10 @@
   <%= f.hidden_field :guest_name %>
   <%= f.hidden_field :comment_to_host %>
   <%= f.hidden_field :password %>
-    <%= f.fields_for :guest_schedules do |i| %>
-      <%= i.hidden_field :join_flag %>
+    <% @event.guests.each_with_index do |_,index| %>
+      <%= f.fields_for "guest_schedules[#{index}]" do |i| %>
+        <%= i.hidden_field :join_flag %>
+      <% end %>
     <% end %>
   <%= f.submit '回答', class: "btn btn-success" %>
 <% end %>

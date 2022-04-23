@@ -19,12 +19,6 @@ class Host::EventsController < ApplicationController
   end
 
   private
-
-  ## accepts_nested_attributes_forを使わず、複数の子レコードを保存する場合
-  # def event_params
-  #   params.require(:event).permit(:title, :schedule_time, :comment, event_schedules: [:candidate_date_start, :candidate_date_end])
-  # end
-
   ## cocoon利用時のパラメータ設定
   def event_params
     params.require(:event).permit(

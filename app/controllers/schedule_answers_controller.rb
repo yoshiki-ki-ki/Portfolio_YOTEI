@@ -11,7 +11,8 @@ class ScheduleAnswersController < ApplicationController
 
   def create
     @guest = Guest.new(guest_params)
-    @event.save
+    @event = Event.find(params[:event_id])
+    @guest.save
     redirect_to schedule_path(@event.id)
   end
 
@@ -33,7 +34,7 @@ class ScheduleAnswersController < ApplicationController
   def guest_params
     params.require(:guest).permit(
       :guest_name, :comment_to_host, :password,
-      guest_schedules_attributes: [:id, :join_flag, :_destroy])
+      guest_schedules_attributes: [:join_flag])
   end
 
 end
