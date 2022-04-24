@@ -15,7 +15,7 @@ class Host::EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.host_id = current_host.id
     @event.save
-    redirect_to schedule_path(@event.id)
+    redirect_to schedule_path(token: @event.token)
   end
 
   private

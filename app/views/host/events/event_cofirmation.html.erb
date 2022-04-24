@@ -12,6 +12,10 @@
           <td><%= @event.schedule_time %></td>
         </tr>
         <tr>
+          <th>コメント</th>
+          <td><%= @event.comment %></td>
+        </tr>
+        <tr>
           <th>候補日</th>
           <% @event.event_schedules.each do |event_schedule| %>
             <td>

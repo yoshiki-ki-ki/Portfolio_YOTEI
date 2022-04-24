@@ -15,7 +15,7 @@
           <tr>
             <td><%= event.created_at.strftime('%Y/%m/%d %H:%M') %></td>
             <td>
-              <%= link_to schedule_path(event.id) do %>
+              <%= link_to schedule_path(token: event.token) do %>
                 <%= event.title %>
               <% end %>
             </td>

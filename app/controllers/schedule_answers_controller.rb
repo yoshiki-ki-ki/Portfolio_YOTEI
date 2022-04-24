@@ -1,19 +1,19 @@
 class ScheduleAnswersController < ApplicationController
   def new
     @guest = Guest.new
-    @event = Event.find(params[:event_id])
+    @event = Event.find_by(token: params[:token])
   end
 
   def answer_confirmation
     @guest = Guest.new(guest_params)
-    @event = Event.find(params[:event_id])
+    @event = Event.find_by(token: params[:token])
   end
 
   def create
     @guest = Guest.new(guest_params)
-    @event = Event.find(params[:event_id])
+    @event = Event.find_by(token: params[:token])
     @guest.save
-    redirect_to schedule_path(@event.id)
+    redirect_to schedule_path(token: @event.token)
   end
 
   def answer
