@@ -63,3 +63,7 @@ gem 'cocoon'
 
 # ページネーション機能
 gem 'kaminari','~> 1.2.1'
+
+# QRコード生成機能
+gem 'rqrcode'
+gem 'chunky_png'

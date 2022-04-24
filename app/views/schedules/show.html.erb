@@ -12,7 +12,7 @@
 <%= link_to "参加可否を入力する",new_schedule_answer_path, class: "btn btn-success" %>
 
 <%= @url %>
-
+<%= image_tag qrcode_tag @url %>
 <% @guest.each do |guest| %>
   <%= guest.guest_name %>さんが参加可否の回答をしました。
 <% end %>
