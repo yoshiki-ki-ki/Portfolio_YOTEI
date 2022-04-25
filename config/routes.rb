@@ -19,8 +19,9 @@ Rails.application.routes.draw do
     post '/events/event_cofirmation'
     resources :events, only: [:new, :create]
 
-    get '/event_schedules/:id/schedule_confirmation' => 'event_schedules#schedule_confirmation'
-    resources :event_schedules, only: [:show, :update]
+    get '/event_schedules/:token/schedule_confirmation' => 'event_schedules#schedule_confirmation' , as: 'schedule_confirmation_event_schedules'
+    get '/event_schedules/:token' => 'event_schedules#show' , as: 'event_schedules'
+    patch '/host/event_schedules/:token' => 'event_schedules#update' , as: 'update_event_schedules'
   end
 
   devise_for :hosts, controllers: {

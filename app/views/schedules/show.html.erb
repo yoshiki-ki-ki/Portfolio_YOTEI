@@ -8,8 +8,11 @@
     ～
     <%= event_schedule.candidate_date_end.strftime('%H:%M') %>
   </div>
+  <% if host_signed_in? %>
+    <%= link_to "回答を見る", host_event_schedules_path, class: "btn btn-light" %>
+  <% end %>
 <% end %>
-<%= link_to "参加可否を入力する",new_schedule_answer_path, class: "btn btn-success" %>
+<%= link_to "参加可否を入力する", new_schedule_answer_path, class: "btn btn-success" %>
 
 <%= @url %>
 <%= image_tag qrcode_tag @url %>
