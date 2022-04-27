@@ -23,7 +23,7 @@ class Host::EventsController < ApplicationController
   def event_params
     params.require(:event).permit(
       :title, :schedule_time, :comment,
-      event_schedules_attributes: [:id, :candidate_date_start, :candidate_date_end ,:_destroy])
+      event_schedules_attributes: [:id, :candidate_date, :candidate_time_start, :candidate_time_end , :_destroy])
   end
 
 end

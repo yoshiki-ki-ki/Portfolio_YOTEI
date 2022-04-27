@@ -4,9 +4,10 @@
   <div>
     <% @event.event_schedules.each_with_index do |event_schedule,index| %>
       <div>
-        <%= event_schedule.candidate_date_start.strftime('%Y/%m/%d %H:%M') %>
+        <%= event_schedule.candidate_date.strftime('%Y/%m/%d') %>
+        <%= event_schedule.candidate_time_start.strftime('%H:%M') %>
         ～
-        <%= event_schedule.candidate_date_end.strftime('%H:%M') %>
+        <%= event_schedule.candidate_time_end.strftime('%H:%M') %>
         <%= f.fields_for "guest_schedules[#{index}]" do |i| %>
           <%= i.radio_button :join_flag, true %>〇
           <%= i.radio_button :join_flag, false %>×

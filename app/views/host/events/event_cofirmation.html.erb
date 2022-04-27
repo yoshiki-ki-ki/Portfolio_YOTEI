@@ -19,9 +19,10 @@
           <th>候補日</th>
           <% @event.event_schedules.each do |event_schedule| %>
             <td>
-              <%= event_schedule.candidate_date_start.strftime('%Y/%m/%d %H:%M') %>
+              <%= event_schedule.candidate_date.strftime('%Y/%m/%d') %>
+              <%= event_schedule.candidate_time_start.strftime('%H:%M') %>
               ～
-              <%= event_schedule.candidate_date_end.strftime('%H:%M') %>
+              <%= event_schedule.candidate_time_end.strftime('%H:%M') %>
             </td>
           <% end %>
         </tr>
@@ -32,8 +33,9 @@
       <%= f.hidden_field :schedule_time %>
       <%= f.hidden_field :comment %>
         <%= f.fields_for :event_schedules do |i| %>
-          <%= i.hidden_field :candidate_date_start %>
-          <%= i.hidden_field :candidate_date_end %>
+          <%= i.hidden_field :candidate_date %>
+          <%= i.hidden_field :candidate_time_start %>
+          <%= i.hidden_field :candidate_time_end %>
         <% end %>
       <%= f.submit "イベントを登録", class:"btn btn-success" %>
     <% end %>

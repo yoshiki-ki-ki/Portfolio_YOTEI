@@ -4,9 +4,10 @@
 <div><%= @event.comment %></div>
 <% @event.event_schedules.each do |event_schedule| %>
   <div>
-    <%= event_schedule.candidate_date_start.strftime('%Y/%m/%d %H:%M') %>
+    <%= event_schedule.candidate_date.strftime('%Y/%m/%d') %>
+    <%= event_schedule.candidate_time_start.strftime('%H:%M') %>
     ～
-    <%= event_schedule.candidate_date_end.strftime('%H:%M') %>
+    <%= event_schedule.candidate_time_end.strftime('%H:%M') %>
   </div>
   <% if host_signed_in? %>
     <%= link_to "回答を見る", host_event_schedules_path, class: "btn btn-light" %>
