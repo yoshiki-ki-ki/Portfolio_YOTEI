@@ -1,7 +1,7 @@
 <h4>参加可否の入力</h4>
 
 <%= form_with model: @guest, url: answer_confirmation_schedule_answer_path, method: :post do |f| %>
-  <div>
+  <div class="form-group">
     <% @event.event_schedules.each_with_index do |event_schedule,index| %>
       <div>
         <%= event_schedule.candidate_date.strftime('%Y/%m/%d') %>
@@ -9,6 +9,7 @@
         ～
         <%= event_schedule.candidate_time_end.strftime('%H:%M') %>
         <%= f.fields_for "guest_schedules[#{index}]" do |i| %>
+          <%= i.hidden_field :parent_schedule, :value => event_schedule.id %>
           <%= i.radio_button :join_flag, true %>〇
           <%= i.radio_button :join_flag, false %>×
         <% end %>

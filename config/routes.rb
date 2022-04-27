@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get '/schedule_answers/:token/new' => 'schedule_answers#new' , as: 'new_schedule_answer'
   post '/schedule_answers/:token/answer_confirmation' => 'schedule_answers#answer_confirmation' , as: 'answer_confirmation_schedule_answer'
-  post '/schedule_answers/:token' => 'schedule_answers#answer_confirmation' , as: 'create_schedule_answer'
+  post '/schedule_answers/:token' => 'schedule_answers#create' , as: 'create_schedule_answer'
   get '/schedule_answers/:token/pass' => 'schedule_answers#answer' , as: 'answer_schedule_answer'
   post '/schedule_answers/:token/pass' => 'schedule_answers#answer_pass' , as: 'answer_pass_schedule_answer'
   get '/schedule_answers/:token/:id/edit' => 'schedule_answers#edit' , as: 'edit_schedule_answer'

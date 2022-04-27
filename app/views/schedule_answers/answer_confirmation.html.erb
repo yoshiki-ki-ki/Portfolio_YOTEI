@@ -1,9 +1,19 @@
-<h4>回答内容の確認</h4>
-
+<div class="container">
+  <h4>回答内容の確認</h4>
+  <div class="row">
+    ニックネーム
+    <%= @guest.guest_name %>
+    主催者へのコメント
+    <%= @guest.comment_to_host %>
+    パスワード
+    <%= @guest.password %>
+  </div>
+</div>
 <%= form_with model: @guest, url: create_schedule_answer_path, method: :post do |f| %>
   <%= f.hidden_field :guest_name %>
   <%= f.hidden_field :comment_to_host %>
   <%= f.hidden_field :password %>
+  <%#= f.hidden_field :guest_schedules, :value => @guest_schedules %>
     <% @event.guests.each_with_index do |_,index| %>
       <%= f.fields_for "guest_schedules[#{index}]" do |i| %>
         <%= i.hidden_field :join_flag %>
