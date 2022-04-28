@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_26_001952) do
+ActiveRecord::Schema.define(version: 2022_04_28_051831) do
 
   create_table "event_schedules", force: :cascade do |t|
     t.integer "event_id", null: false
@@ -45,10 +45,10 @@ ActiveRecord::Schema.define(version: 2022_04_26_001952) do
   create_table "guests", force: :cascade do |t|
     t.integer "event_id", null: false
     t.string "guest_name", default: "", null: false
-    t.string "password", default: "", null: false
     t.text "comment_to_host", default: ""
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
   end
 
   create_table "hosts", force: :cascade do |t|

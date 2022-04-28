@@ -1,6 +1,20 @@
 <div class="container">
+  <h4>みんなの回答を確認</h4>
   <div class="row">
-    <h4>みんなの回答を確認</h4>
-    <%= link_to "この日に決定する", host_schedule_confirmation_event_schedules_path, class: "btn btn-light" %>
+    <%= @event_schedule.candidate_date.strftime('%Y/%m/%d') %>
+    <%= @event_schedule.candidate_time_start.strftime('%H:%M') %>
+    ～
+    <%= @event_schedule.candidate_time_end.strftime('%H:%M') %>
+    
+    <% @guests.each do |guest| %>
+      <%= guest.guest_name %>さん
+      <%= guest.comment_to_host %>
+      <%# if guest.guest_schedules.join_flag == true %>
+      <!--参加できる-->
+      <%# else %>
+      <!--参加できない-->
+      <%# end %>
+    <% end %>
   </div>
+  <%= link_to "この日に決定する", host_schedule_confirmation_event_schedule_path, class: "btn btn-light" %>
 </div>

@@ -13,7 +13,6 @@
   <%= f.hidden_field :guest_name %>
   <%= f.hidden_field :comment_to_host %>
   <%= f.hidden_field :password %>
-  <%#= f.hidden_field :guest_schedules, :value => @guest_schedules %>
     <% @event.guests.each_with_index do |_,index| %>
       <%= f.fields_for "guest_schedules[#{index}]" do |i| %>
         <%= i.hidden_field :join_flag %>

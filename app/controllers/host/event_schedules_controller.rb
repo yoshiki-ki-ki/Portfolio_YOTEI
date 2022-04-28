@@ -1,6 +1,7 @@
 class Host::EventSchedulesController < ApplicationController
   def show
-    @event = Event.find_by(token: params[:token])
+    @event_schedule = EventSchedule.find(params[:id])
+    @guests = @event_schedule.event.guests.all
   end
 
   def schedule_confirmation

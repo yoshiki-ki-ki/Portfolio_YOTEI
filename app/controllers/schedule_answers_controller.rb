@@ -7,7 +7,6 @@ class ScheduleAnswersController < ApplicationController
   def answer_confirmation
     @guest = Guest.new(guest_params)
     @event = Event.find_by(token: params[:token])
-   # @guest_schedules = params[:guest][:guest_schedules]
     session[:guest_schedules] = params[:guest][:guest_schedules].to_unsafe_h
   end
 
@@ -16,7 +15,6 @@ class ScheduleAnswersController < ApplicationController
     @event = Event.find_by(token: params[:token])
     @guest.event_id = @event.id
     @guest.save
-    #session[:guest_schedules]
     session[:guest_schedules].each do |guest_schedule_params|
       guest_schedule = GuestSchedule.new
       guest_schedule.guest_id = @guest.id
@@ -28,9 +26,17 @@ class ScheduleAnswersController < ApplicationController
   end
 
   def answer
+    @guest = Guest.find(params[:id])
   end
 
   def answer_pass
+    guest_id = Guest.find(params[:id])
+    if guest_id && guest_id.authenticate(params[:guest][:password])
+      redirect_to edit_schedule_answer_path(guest_id, parameter: guest_id.password_digest)
+    else
+      @guest = Guest.find(params[:id])
+      render '/schedule_answers/:id/pass'
+    end
   end
 
   def edit

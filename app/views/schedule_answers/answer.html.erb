@@ -1,2 +1,8 @@
-<h1>ScheduleAnswers#answer</h1>
-<p>Find me in app/views/schedule_answers/answer.html.erb</p>
+<small><%= @guest.guest_name %>さんの回答内容を編集する場合はパスワードを入力して「回答内容の確認・編集」ボタンを押してください</small>
+<%= form_with model: @guest, url: answer_pass_schedule_answer_path, method: :post do |f| %>
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
+  </div>
+  <%= f.submit '回答内容の確認・編集', class: "btn btn-success" %>
+<% end %>
