@@ -1,0 +1,23 @@
+
+[1mFrom:[0m /home/ec2-user/environment/YOTEI/app/controllers/schedule_answers_controller.rb:31 ScheduleAnswersController#create:
+
+    [1;34m14[0m: [32mdef[0m [1;34mcreate[0m
+    [1;34m15[0m:   @guest = [1;34;4mGuest[0m.new(guest_params)
+    [1;34m16[0m:   @event = [1;34;4mEvent[0m.find_by([35mtoken[0m: params[[33m:token[0m])
+    [1;34m17[0m:   @guest.event_id = @event.id
+    [1;34m18[0m: 
+    [1;34m19[0m:   @guest.save
+    [1;34m20[0m:   @guest_schedules = []
+    [1;34m21[0m:   session[[33m:guest_schedules[0m].each_with_index [32mdo[0m |guest_schedule_params,i|
+    [1;34m22[0m:     guest_schedule = [1;34;4mGuestSchedule[0m.new
+    [1;34m23[0m:     guest_schedule.guest_id = @guest.id
+    [1;34m24[0m:     guest_schedule.event_schedule_id = guest_schedule_params[[1;34m1[0m][[31m[1;31m"[0m[31mparent_schedule[1;31m"[0m[31m[0m].to_i
+    [1;34m25[0m:     guest_schedule.join_flag = guest_schedule_params[[1;34m1[0m][[31m[1;31m"[0m[31mjoin_flag[1;31m"[0m[31m[0m]
+    [1;34m26[0m:     guest_schedule.save
+    [1;34m27[0m:     @guest_schedules.push(guest_schedule)
+    [1;34m28[0m:   [32mend[0m
+    [1;34m29[0m:   binding.pry
+    [1;34m30[0m:   [1;34m# @guest_schedules = GuestSchedule.where([:guest_id][:event_schedule_id])[0m
+ => [1;34m31[0m:   redirect_to schedule_path([35mtoken[0m: @event.token)
+    [1;34m32[0m: [32mend[0m
+

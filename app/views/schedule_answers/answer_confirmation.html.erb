@@ -7,6 +7,18 @@
     <%= @guest.comment_to_host %>
     パスワード
     <%= @guest.password %>
+    参加可否
+    <% @guest_schedules.each do |guest_schedule| %>
+      <%= guest_schedule.event_schedule.candidate_date.strftime('%Y/%m/%d') %>
+      <%= guest_schedule.event_schedule.candidate_time_start.strftime('%H:%M') %>
+        ～
+      <%= guest_schedule.event_schedule.candidate_time_end.strftime('%H:%M') %>
+      <% if guest_schedule.join_flag == true %>
+    　<p>〇</p>
+      <% else %>
+      <p>×</p>
+      <% end %>
+    <% end %>
   </div>
 </div>
 <%= form_with model: @guest, url: create_schedule_answer_path, method: :post do |f| %>

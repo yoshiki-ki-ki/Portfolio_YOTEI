@@ -1,6 +1,6 @@
 <h4>参加可否の入力</h4>
 
-<%= form_with model: @guest, url: update_schedule_answer_path, method: :post do |f| %>
+<%= form_with model: @guest, url: answer_confirmation_schedule_answer_path, method: :post do |f| %>
   <div class="form-group">
     <% @event.event_schedules.each_with_index do |event_schedule,index| %>
       <div>
