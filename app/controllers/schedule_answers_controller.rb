@@ -34,18 +34,23 @@ class ScheduleAnswersController < ApplicationController
     if guest_id && guest_id.authenticate(params[:guest][:password])
       redirect_to edit_schedule_answer_path(guest_id, parameter: guest_id.password_digest)
     else
-      @guest = Guest.find(params[:id])
-      render '/schedule_answers/:id/pass'
+      redirect_to answer_schedule_answer_path
     end
   end
 
   def edit
+    @guest = Guest.find(params[:id])
+    @event = @guest.event
   end
 
   def update
   end
 
   def destroy
+    @guest = Guest.find(params[:id])
+    @guest.destroy
+    @event = Event.find_by(token: params[:token])
+    redirect_to schedule_path(token: @event.token)
   end
 
   def guest_params
