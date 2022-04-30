@@ -6,9 +6,12 @@ class Host::EventSchedulesController < ApplicationController
   end
 
   def schedule_confirmation
+    @event_schedule = EventSchedule.find(params[:id])
+    @event = @event_schedule.event
+    @dicision_date = @event_schedule.candidate_date
+    @decision_time_start = @event_schedule.candidate_time_start
+    @decision_time_end = @event_schedule.candidate_time_end
   end
 
-  def update
-  end
 
 end

@@ -1,35 +1,41 @@
-<h4>イベント</h4>
-<div>タイトル<%= @event.title %></div>
-<div>予定時間<%= @event.schedule_time %></div>
-<div>主催者からのコメント<%= @event.comment %></div>
-<div>
-  <% @event_schedules.each do |event_schedule| %>
-    <div>
-      <%= event_schedule.candidate_date.strftime('%Y/%m/%d') %>
-      <%= event_schedule.candidate_time_start.strftime('%H:%M') %>
-      ～
-      <%= event_schedule.candidate_time_end.strftime('%H:%M') %>
-      <% if host_signed_in? %>
-        <%= link_to "回答を見る", host_event_schedule_path(event_schedule.id), class: "btn btn-light" %>
+<div class="container">
+  <div class="row mx-auto">
+    <div>タイトル<%= @event.title %></div>
+    <div>予定時間<%= @event.schedule_time %></div>
+    <div>主催者からのコメント<%= @event.comment %></div>
+  </div>
+  <div class="row mx-auto">
+    <div class="col-sm-8 mx-auto">
+      <% @event_schedules.each do |event_schedule| %>
+        <div class="d-flex flex-sm-row bd-highlight mb-3">
+          <div class="p-2 bd-highlight">
+            <%= event_schedule.candidate_date.strftime('%Y/%m/%d') %>
+            <%= event_schedule.candidate_time_start.strftime('%H:%M') %>
+            ～
+            <%= event_schedule.candidate_time_end.strftime('%H:%M') %>
+            <% if host_signed_in? %>
+              <%= link_to "回答を見る", host_event_schedule_path(event_schedule.id), class: "btn btn-light" %>
+            <% end %>
+          </div>
+        </div>
       <% end %>
     </div>
-  <% end %>
-</div>
-<%= link_to "参加可否を入力する", new_schedule_answer_path, class: "btn btn-success" %>
-
-<div>
-  共有URL　参加者の方々へ共有しましょう。
-  <%= @url %>
-</div>
-<div>
-  共有QRコード
-  <%= image_tag qrcode_tag @url %>
-</div>
-<div>
+  </div>
+  <%= link_to "参加可否を入力する", new_schedule_answer_path, class: "btn btn-success" %>
+  <div>
+    <p>共有URL<br>参加者の方々へ共有しましょう。</p>
+    <%= @url %>
+  </div>
+  <div>
+    共有QRコード
+    <%= image_tag qrcode_tag @url %>
+  </div>
   参加者
-  <% @guest.each do |guest| %>
-    <div>
-      <%= link_to guest.guest_name, answer_schedule_answer_path(guest.id) %>さんが参加可否の回答をしました。
-    </div>
-  <% end %>
+  <div>
+    <% @guest.each do |guest| %>
+      <div>
+        <%= link_to guest.guest_name, answer_schedule_answer_path(guest.id) %>さんが参加可否の回答をしました。
+      </div>
+    <% end %>
+  </div>
 </div>

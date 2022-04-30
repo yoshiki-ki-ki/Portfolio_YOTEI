@@ -1,5 +1,16 @@
 <div class="container">
   <div class="row">
-    <h4>この日に決定しますか？　はい　いいえ</h4>
+      <%= @event_schedule.candidate_date.strftime('%Y/%m/%d') %>
+      <%= @event_schedule.candidate_time_start.strftime('%H:%M') %>
+      ～
+      <%= @event_schedule.candidate_time_end.strftime('%H:%M') %>
+    <h4>この日に決定しますか？</h4>
+    <%= form_with model:@event, url: host_event_path, method: :patch do |f| %>
+      <%= f.hidden_field :dicision_date, :value => @dicision_date %>
+      <%= f.hidden_field :decision_time_start, :value => @decision_time_start %>
+      <%= f.hidden_field :decision_time_end, :value => @decision_time_end %>
+      <%= f.submit "はい", class:"btn btn-success" %>
+    <% end %>
+    <%= link_to "いいえ", schedule_path(token: @event.token), class: "btn btn-success" %>
   </div>
 </div>

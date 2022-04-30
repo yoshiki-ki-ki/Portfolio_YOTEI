@@ -1,4 +1,6 @@
 class ScheduleAnswersController < ApplicationController
+  before_action :with_password, only: :edit
+
   def new
     @guest = Guest.new
     @event = Event.find_by(token: params[:token])
@@ -69,6 +71,18 @@ class ScheduleAnswersController < ApplicationController
     @guest.destroy
     @event = @guest.event
     redirect_to schedule_path(token: @event.token)
+  end
+
+  private
+  def with_password
+    url = request.url.gsub!(/%21|%22|%23|%24|%24|%25|%26|%27|%28|%29|%2A|%2B|%2C|%2F|%3A|%3B|%3C|%3D|%3E|%3F|%40|%5B|%5D|%5E|%60|%7B|%7C|%7D|%7E|/,
+    "%21" => "!", "%22" => '"', "%23" => "#", "%24" => "$", "%25" => "%", "%26" => "&", "%27" => "'", "%28" => "(", "%29" => ")",
+    "%2A" => "*", "%2B" => "+", "%2C" => ",", "%2F" => "/", "%3A" => ":", "%3B" => ";", "%3C" => "<", "%3D" => "=", "%3E" => ">", "%3F" => "?", "%40" => "@",
+    "%5B" => "[", "%5D" => "]", "%5E" => "^", "%60" => "`", "%7B" => "{", "%7C" => "|", "%7D" => "}", "%7E" => "~")
+    @guest = Guest.find(params[:id])
+    if !@guest.password_digest.nil? && !url.try(:include?, @guest.password_digest)
+      redirect_to "answer_schedule_answer_path#{@guest.id}", danger: 'パスワードを入力してください'
+    end
   end
 
   def guest_params
