@@ -20,7 +20,13 @@
               <% end %>
             </td>
             <td><%= event.schedule_time %></td>
-            <td><%= event.dicision_date %><%= event.decision_time_start %>～<%= event.decision_time_end %></td>
+            <td>
+              <% unless event.dicision_date.nil? %>
+                <%= event.dicision_date.strftime('%Y/%m/%d') %> <%= event.decision_time_start.strftime('%H:%M') %>～<%= event.decision_time_end.strftime('%Y/%m/%d') %>
+              <% else %>
+                None
+              <% end %>
+            </td>
             <td><%= event.guests.count %></td>
           </tr>
         <% end %>

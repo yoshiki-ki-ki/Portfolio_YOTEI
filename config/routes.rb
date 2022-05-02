@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   get '/schedule_answers/:id/pass' => 'schedule_answers#answer' , as: 'answer_schedule_answer'
   post '/schedule_answers/:id/pass' => 'schedule_answers#answer_pass' , as: 'answer_pass_schedule_answer'
   get '/schedule_answers/:id/edit' => 'schedule_answers#edit' , as: 'edit_schedule_answer'
-  post '/schedule_answers/:id' => 'schedule_answers#update' , as: 'update_schedule_answer'
-  post '/schedule_answers/:id' => 'schedule_answers#destroy' , as: 'destroy_schedule_answer'
+  patch '/schedule_answers/:id' => 'schedule_answers#update' , as: 'update_schedule_answer'
+  delete '/schedule_answers/:id' => 'schedule_answers#destroy' , as: 'destroy_schedule_answer'
 
   namespace :host do
     get '/mypage' => 'homes#index'

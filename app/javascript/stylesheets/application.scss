@@ -1,1 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
+
+.event_guest_list_field {
+  width: 100%;
+  height: 100px;
+  overflow-y: scroll;
+}

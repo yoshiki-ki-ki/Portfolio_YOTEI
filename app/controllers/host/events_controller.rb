@@ -17,13 +17,11 @@ class Host::EventsController < ApplicationController
     @event.save
     redirect_to schedule_path(token: @event.token)
   end
-  
+
   def update
     @event_schedule = EventSchedule.find(params[:id])
     @event = @event_schedule.event
-    #binding.pry
     @event.update(event_params)
-    #byebug
     redirect_to schedule_path(token: @event.token)
   end
 

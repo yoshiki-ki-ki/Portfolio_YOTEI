@@ -1,5 +1,5 @@
 <h4>回答内容の確認・編集</h4>
-<%= form_with model: @guest, url: update_schedule_answer_path, method: :post do |f| %>
+<%= form_with model: @guest, url: update_schedule_answer_path, method: :patch do |f| %>
   <div class="form-group">
     <% @event.event_schedules.each_with_index do |event_schedule,index| %>
       <div>
@@ -7,12 +7,13 @@
         <%= event_schedule.candidate_time_start.strftime('%H:%M') %>
         ～
         <%= event_schedule.candidate_time_end.strftime('%H:%M') %>
-        <%= f.fields_for "guest_schedules[#{index}]" do |i| %>
-          <%= i.hidden_field :parent_schedule, :value => event_schedule.id %>
-          <%= i.radio_button :join_flag, true %>〇
-          <%= i.radio_button :join_flag, false %>×
+        <%= f.fields_for "guest_schedules[#{event_schedule.id}]" do |i| %>
+          <%#= i.hidden_field :parent_schedule, :value => event_schedule.id %>
+          <%= i.radio_button :join_flag, true, checked: @guest_schedules.find_by(event_schedule_id: event_schedule.id).join_flag ? true : false %>〇
+          <%= i.radio_button :join_flag, false, checked: @guest_schedules.find_by(event_schedule_id: event_schedule.id).join_flag ? false : true %>×
         <% end %>
       </div>
+      <%# binding.irb %>
     <% end %>
   </div>
   <div class="form-group">
