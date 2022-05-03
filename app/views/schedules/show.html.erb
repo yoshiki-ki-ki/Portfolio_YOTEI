@@ -1,10 +1,22 @@
 <div class="container">
   <div class="row mx-auto">
-    <div>タイトル<%= @event.title %></div>
-    <div>予定時間<%= @event.schedule_time %></div>
-    <div>主催者からのコメント<%= @event.comment %></div>
+    <table class="table table-borderless">
+      <tr>
+        <th>イベント</th>
+        <td>：<%= @event.title %></td>
+      </tr>
+      <tr>
+        <th>予定時間</th>
+        <td>：<%= @event.schedule_time %></td>
+      </tr>
+      <tr>
+        <th>主催者からの<br>コメント</th>
+        <td>：<%= @event.comment %></td>
+      </tr>
+    </table>
   </div>
   <div class="row mx-auto">
+    候補日
     <div class="col-sm-8 mx-auto">
       <% @event_schedules.each do |event_schedule| %>
         <div class="d-flex flex-sm-row bd-highlight mb-3">
@@ -21,24 +33,33 @@
       <% end %>
     </div>
   </div>
-  <%= link_to "参加可否を入力する", new_schedule_answer_path, class: "btn btn-success" %>
-  <div>
-    <p>共有URL<br>参加者の方々へ共有しましょう。</p>
-    <%#= @url %>
-    <input type="text" id="event_url" value="<%= @url %>" class="form-control mb-3" />
-    <button onclick="urlCopy()">Copy!</button>
+  <div class="col-6 mx-auto">
+    <%= link_to "参加可否を入力", new_schedule_answer_path, class: "btn btn-success" %>
   </div>
-  <div>
-    共有QRコード
-    <%= image_tag qrcode_tag @url %>
-  </div>
-  参加者
+    参加者
   <div class="event_guest_list_field">
-    <% @guest.each do |guest| %>
-      <div>
-        <%= link_to guest.guest_name, answer_schedule_answer_path(guest.id) %>さんが参加可否の回答をしました。
-      </div>
-    <% end %>
+    <div class="event_guest_list">
+      <% @guest.each do |guest| %>
+        <div class="guest_list">
+          <%= link_to guest.guest_name, answer_schedule_answer_path(guest.id) %>さんが参加可否の回答をしました。
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class ="row mx-auto">
+    <p>共有URL<br>参加者の方々へ共有しましょう。</p>
+    <div class="col-9">
+      <input type="text" id="event_url" value="<%= @url %>" class="form-control mb-3" />
+    </div>
+    <div class="col-3">
+      <button onclick="urlCopy()">コピー!</button>
+    </div>
+  </div>
+  <div class="mt-3">
+    <p>共有QRコード</p>
+    <div class="d-flex justify-content-center">
+      <%= image_tag qrcode_tag @url %>
+    </div>
   </div>
 </div>
 

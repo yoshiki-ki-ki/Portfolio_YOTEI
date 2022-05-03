@@ -61,17 +61,6 @@ class ScheduleAnswersController < ApplicationController
     @guest = Guest.find(params[:id])
     @event = @guest.event
     @guest.update(guest_params)
-    # session[:guest_schedules] = params[:guest][:guest_schedules].to_unsafe_h
-    # @guest_schedules = []
-    # session[:guest_schedules].each_with_index do |guest_schedule_params,i|
-    #   guest_schedule = GuestSchedule.new
-    #   guest_schedule.guest_id = @guest.id
-    #   guest_schedule.event_schedule_id = guest_schedule_params[1]["parent_schedule"].to_i
-    #   guest_schedule.join_flag = guest_schedule_params[1]["join_flag"]
-    #   guest_schedule.update
-    #   @guest_schedules.push(guest_schedule)
-    # end
-    # binding.irb
     params[:guest][:guest_schedules].each do |k, v|
       GuestSchedule.find_by(guest_id: @guest.id, event_schedule_id: k).update(join_flag: v[:join_flag])
     end

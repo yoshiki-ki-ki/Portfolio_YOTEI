@@ -2,6 +2,15 @@
 
 .event_guest_list_field {
   width: 100%;
+}
+
+.event_guest_list {
   height: 100px;
   overflow-y: scroll;
+  margin: 20px;
+  border: double 2px #C0C0C0;
+}
+
+.guest_list {
+  margin-left: 10px;
 }
