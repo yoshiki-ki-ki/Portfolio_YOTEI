@@ -21,7 +21,7 @@
       <% @event_schedules.each do |event_schedule| %>
         <div class="d-flex flex-sm-row bd-highlight mb-3">
           <div class="p-2 bd-highlight">
-            <%= event_schedule.candidate_date.strftime('%Y/%m/%d') %>
+            ・<%= event_schedule.candidate_date.strftime('%Y/%m/%d') %>
             <%= event_schedule.candidate_time_start.strftime('%H:%M') %>
             ～
             <%= event_schedule.candidate_time_end.strftime('%H:%M') %>
@@ -48,11 +48,13 @@
   </div>
   <div class ="row mx-auto">
     <p>共有URL<br>参加者の方々へ共有しましょう。</p>
-    <div class="col-8">
+    <div class="col-9">
       <input type="text" id="event_url" value="<%= @url %>" class="form-control mb-3" />
     </div>
-    <div class="col-4">
-      <button onclick="urlCopy()">copy</button>
+    <div class="col-3">
+      <button onclick="urlCopy()">
+        <i class="fas fa-copy"></i>
+      </button>
     </div>
   </div>
   <div class="mt-3">

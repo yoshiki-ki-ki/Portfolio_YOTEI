@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
+    <script src="https://kit.fontawesome.com/61d492468d.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -22,24 +23,42 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <%= link_to "つかいかた", manual_path, target: :_blank, rel: "noopener noreferrer", class: 'nav-link text-dark' %>
+              <%= link_to manual_path, target: :_blank, rel: "noopener noreferrer", class: 'nav-link text-dark' do %>
+                <i class="fas fa-question"></i>
+                つかいかた
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "日程を決める", new_host_event_path, class: 'nav-link text-dark' %>
+              <%= link_to new_host_event_path, class: 'nav-link text-dark' do %>
+                <i class="far fa-calendar-alt"></i>
+                日程をきめる
+              <% end %>
             </li>
             <% if host_signed_in? %>
               <li class="nav-item">
-                <%= link_to 'マイページ', host_mypage_path(current_host.id), class: 'nav-link text-dark' %>
+                <%= link_to host_mypage_path(current_host.id), class: 'nav-link text-dark' do %>
+                  <i class="fas fa-home"></i>
+                  マイページ
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to "ログアウト", destroy_host_session_path, method: :delete, class: 'nav-link text-dark' %>
+                <%= link_to destroy_host_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                  <i class="fas fa-sign-out-alt"></i>
+                  ログアウト
+                <% end %>
             </li>
             <% else %>
               <li class="nav-item">
-                <%= link_to "新規登録", new_host_registration_path, class: 'nav-link text-dark' %>
+                  <%= link_to new_host_registration_path, class: 'nav-link text-dark' do %>
+                  <i class="fas fa-user-plus"></i>
+                  新規登録
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to "ログイン", new_host_session_path, class: 'nav-link text-dark' %>
+                <%= link_to new_host_session_path, class: 'nav-link text-dark' do %>
+                  <i class="fas fa-sign-in-alt"></i>
+                  ログイン
+                <% end %>
               </li>
             <% end %>
             </ul>
