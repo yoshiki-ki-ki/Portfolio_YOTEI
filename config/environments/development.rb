@@ -74,5 +74,12 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
+  config.after_initialize do
+    Bullet.enable = true # Bulletプラグインを有効
+    Bullet.alert = true # JavaScriptでの通知
+    Bullet.console = true # ブラウザのコンソールログに記録
+    Bullet.rails_logger = true # Railsログに出力
+  end
+
   config.hosts << "91cf027993754bb88e49cc41d22a68d5.vfs.cloud9.ap-northeast-1.amazonaws.com"
 end
