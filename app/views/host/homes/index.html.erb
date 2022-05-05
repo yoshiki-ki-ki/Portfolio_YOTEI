@@ -22,7 +22,7 @@
             <td><%= event.schedule_time %></td>
             <td>
               <% unless event.dicision_date.nil? %>
-                <%= event.dicision_date.strftime('%Y/%m/%d') %> <%= event.decision_time_start.strftime('%H:%M') %>～<%= event.decision_time_end.strftime('%Y/%m/%d') %>
+                <%= event.dicision_date.strftime('%Y/%m/%d') %> <%= event.decision_time_start.strftime('%H:%M') %>～<%= event.decision_time_end.strftime('%H:%M') %>
               <% else %>
                 None
               <% end %>

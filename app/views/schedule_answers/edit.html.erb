@@ -1,31 +1,44 @@
-<h4>回答内容の確認・編集</h4>
-<%= form_with model: @guest, url: update_schedule_answer_path, method: :patch do |f| %>
-  <div class="form-group">
-    <% @event.event_schedules.each_with_index do |event_schedule,index| %>
-      <div>
-        <%= event_schedule.candidate_date.strftime('%Y/%m/%d') %>
-        <%= event_schedule.candidate_time_start.strftime('%H:%M') %>
-        ～
-        <%= event_schedule.candidate_time_end.strftime('%H:%M') %>
-        <%= f.fields_for "guest_schedules[#{event_schedule.id}]" do |i| %>
-          <%= i.radio_button :join_flag, true, checked: @guest_schedules.find_by(event_schedule_id: event_schedule.id).join_flag ? true : false %>〇
-          <%= i.radio_button :join_flag, false, checked: @guest_schedules.find_by(event_schedule_id: event_schedule.id).join_flag ? false : true %>×
+<div class="container">
+  <h4>回答内容の確認・編集</h4>
+  <%= form_with model: @guest, url: update_schedule_answer_path, method: :patch do |f| %>
+    <div class="row">
+      <div class="form-group">
+        <% @event.event_schedules.each_with_index do |event_schedule,index| %>
+          <div>
+            <%= event_schedule.candidate_date.strftime('%Y/%m/%d') %>
+            <%= event_schedule.candidate_time_start.strftime('%H:%M') %>
+            ～
+            <%= event_schedule.candidate_time_end.strftime('%H:%M') %>
+            <%= f.fields_for "guest_schedules[#{event_schedule.id}]" do |i| %>
+              <%= i.radio_button :join_flag, true, checked: @guest_schedules.find_by(event_schedule_id: event_schedule.id).join_flag ? true : false %>〇
+              <%= i.radio_button :join_flag, false, checked: @guest_schedules.find_by(event_schedule_id: event_schedule.id).join_flag ? false : true %>×
+            <% end %>
+          </div>
         <% end %>
       </div>
-    <% end %>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <%= f.label :ニックネーム, class: "mr-5" %>
+        <%= f.text_field :guest_name, placeholder: "", class: "mr-5" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :主催者へのコメント, class: "mr-5" %>
+        <%= f.text_field :comment_to_host, placeholder: "", class: "mr-5" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :パスワード, class: "mr-5" %>
+        <%= f.text_field :password, placeholder: "", class: "mr-5" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 mx-auto">
+        <%= f.submit '更新', class: "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
+  <div class="row d-flex justify-content-between">
+    <%= link_to '回答を削除', destroy_schedule_answer_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+    <%= link_to "もどる", schedule_path(token: @event.token), class: "btn btn-success" %>
   </div>
-  <div class="form-group">
-    <%= f.label :ニックネーム, class: "mr-5" %>
-    <%= f.text_field :guest_name, placeholder: "", class: "mr-5" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :主催者へのコメント, class: "mr-5" %>
-    <%= f.text_field :comment_to_host, placeholder: "", class: "mr-5" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :パスワード, class: "mr-5" %>
-    <%= f.text_field :password, placeholder: "", class: "mr-5" %>
-  </div>
-  <%= f.submit '回答内容を更新', class: "btn btn-success" %>
-<% end %>
-<%= link_to "もどる", schedule_path(token: @event.token), class: "btn btn-success" %>
+</div>

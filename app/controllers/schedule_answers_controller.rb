@@ -69,8 +69,8 @@ class ScheduleAnswersController < ApplicationController
 
   def destroy
     @guest = Guest.find(params[:id])
-    @guest.destroy
     @event = @guest.event
+    @guest.destroy
     redirect_to schedule_path(token: @event.token)
   end
 
