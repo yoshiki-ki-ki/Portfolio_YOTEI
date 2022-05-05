@@ -5,7 +5,6 @@
         <tr>
           <th scope="col">作成日</th>
           <th scope="col">タイトル</th>
-          <th scope="col">予定時間</th>
           <th scope="col">決定日時</th>
           <th scope="col">回答者数</th>
         </tr>
@@ -19,7 +18,6 @@
                 <%= event.title %>
               <% end %>
             </td>
-            <td><%= event.schedule_time %></td>
             <td>
               <% unless event.dicision_date.nil? %>
                 <%= event.dicision_date.strftime('%Y/%m/%d') %> <%= event.decision_time_start.strftime('%H:%M') %>～<%= event.decision_time_end.strftime('%H:%M') %>

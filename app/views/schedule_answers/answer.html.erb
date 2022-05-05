@@ -1,8 +1,15 @@
-<small><%= @guest.guest_name %>さんの回答内容を編集する場合はパスワードを入力して「回答内容の確認・編集」ボタンを押してください</small>
-<%= form_with model: @guest, url: answer_pass_schedule_answer_path, method: :post do |f| %>
-  <div class="form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, class: 'form-control' %>
+<div Class="container">
+  <div class="box">
+    <span class="box-title">
+      <%= @guest.guest_name %>さんの回答内容確認・編集
+    </span>
+    <%= form_with model: @guest, url: answer_pass_schedule_answer_path, method: :post do |f| %>
+      <div class="form-group col-sm-9 mt-5">
+        <%= f.password_field :password, placeholder: "パスワードを入力してください", class: 'form-control' %>
+      </div>
+      <div class="col-6 mt-4 mx-auto">
+        <%= f.submit '確認・編集', class: "btn btn-success" %>
+      </div>
+    <% end %>
   </div>
-  <%= f.submit '回答内容の確認・編集', class: "btn btn-success" %>
-<% end %>
+</div>
