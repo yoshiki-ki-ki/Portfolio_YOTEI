@@ -4,7 +4,7 @@
       <div class="form-group col-sm-3">
         <%= f.date_field :candidate_date, min: Date.today, class: "form-control" %>
       </div>
-      <div class="form-group col-sm-3">
+      <div class="form-group col-sm-3 mt-1">
         <%= f.time_select :candidate_time_start, minute_step: 10, class: "form-control" %>
         ～
         <%= f.time_select :candidate_time_end, minute_step: 10, class: "form-control" %>

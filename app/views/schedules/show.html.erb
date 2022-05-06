@@ -39,7 +39,7 @@
     </div>
   </div>
   <div class="col-6 mx-auto">
-    <%= link_to "参加可否を入力", new_schedule_answer_path, class: "btn btn-secondary" %>
+    <%= link_to "参加可否を入力", new_schedule_answer_path, class: "btn btn-secondary btn-sm btn-block" %>
   </div>
   <div class="box">
     <span class="box-title">参加者</span>
@@ -49,6 +49,16 @@
           <%= link_to guest.guest_name, answer_schedule_answer_path(guest.id) %>さんが参加可否の回答をしました。
         </div>
       <% end %>
+    </div>
+  </div>
+  <div class="box">
+    <div class="row">
+      <span class="box-title">共有QRコード</span>
+      <div class="col-4 mx-auto">
+        <div class="d-flex justify-content-center">
+          <%= image_tag qrcode_tag @url %>
+        </div>
+      </div>
     </div>
   </div>
   <div class="box">
@@ -62,16 +72,6 @@
           <button onclick="urlCopy()">
             <i class="fas fa-copy"></i>
           </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="box">
-    <div class="row">
-      <span class="box-title">共有QRコード</span>
-      <div class="col-4 mx-auto">
-        <div class="d-flex justify-content-center">
-          <%= image_tag qrcode_tag @url %>
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@
         <div class="box">
           <span class="box-title">基本情報を入力</span>
           <div class="form-group col-sm-9">
-            <%= f.label :タイトル, class: "col-sm-2 col-form-label" %>
+            <%= f.label :タイトル（必須）, class: "col-sm-2 col-form-label" %>
             <%= f.text_field :title, placeholder: "飲み会", class: "form-control" %>
           </div>
           <div class="form-group col-sm-9">
@@ -18,7 +18,7 @@
           </div>
         </div>
         <div class="box">
-          <span class="box-title">候補日を入力</span>
+          <span class="box-title">候補日を入力（必須）</span>
           <div class="form-group col-sm-9">
             <div class="mx-auto">
               <%= f.fields_for :event_schedules do |event_schedule| %>

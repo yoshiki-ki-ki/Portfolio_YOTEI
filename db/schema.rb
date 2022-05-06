@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_28_051831) do
+ActiveRecord::Schema.define(version: 2022_05_06_113904) do
 
   create_table "event_schedules", force: :cascade do |t|
     t.integer "event_id", null: false
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 2022_04_28_051831) do
   create_table "events", force: :cascade do |t|
     t.integer "host_id", null: false
     t.string "title", default: "", null: false
-    t.string "schedule_time", default: "", null: false
-    t.text "comment", default: "", null: false
+    t.string "schedule_time", default: ""
+    t.text "comment", default: ""
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "token"
