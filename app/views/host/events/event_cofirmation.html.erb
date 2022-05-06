@@ -1,43 +1,64 @@
 <div class="container">
-  <div class="row">
-    <h4>内容確認</h4>
-    <table class="table table-borderless">
-      <tbody>
+  <h4>内容確認</h4>
+  <div class="box">
+    <div class="row">
+      <table class="table table-borderless">
         <tr>
-          <th>タイトル</th>
+          <th class="w-25">タイトル</th>
           <td><%= @event.title %></td>
         </tr>
         <tr>
-          <th>予定時間</th>
+          <th class="w-25">予定時間</th>
           <td><%= @event.schedule_time %></td>
         </tr>
-        <tr>
-          <th>コメント</th>
+        <tr class="text-break">
+          <th class="w-25">備考</th>
           <td><%= @event.comment %></td>
         </tr>
-        <tr>
-          <th>候補日</th>
-          <% @event.event_schedules.each do |event_schedule| %>
-            <td>
-              <%= event_schedule.candidate_date.strftime('%Y/%m/%d') %>
-              <%= event_schedule.candidate_time_start.strftime('%H:%M') %>
-              ～
-              <%= event_schedule.candidate_time_end.strftime('%H:%M') %>
-            </td>
-          <% end %>
-        </tr>
-      </tbody>
-    </table>
-    <%= form_with model:@event, url: host_events_path, method: :post do |f| %>
-      <%= f.hidden_field :title %>
-      <%= f.hidden_field :schedule_time %>
-      <%= f.hidden_field :comment %>
-        <%= f.fields_for :event_schedules do |i| %>
-          <%= i.hidden_field :candidate_date %>
-          <%= i.hidden_field :candidate_time_start %>
-          <%= i.hidden_field :candidate_time_end %>
+      </table>
+    </div>
+  </div>
+  <div class="row mx-auto">
+    <div class="box">
+      <span class="box-title">候補日</span>
+      <div class="col-sm-8 mx-auto">
+        <% @event.event_schedules.each do |event_schedule| %>
+          <td>
+           ・<%= event_schedule.candidate_date.strftime('%Y/%m/%d') %>
+            <%= event_schedule.candidate_time_start.strftime('%H:%M') %>
+            ～
+            <%= event_schedule.candidate_time_end.strftime('%H:%M') %>
+          </td>
         <% end %>
-      <%= f.submit "イベントを登録", class:"btn btn-success" %>
-    <% end %>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+  　<div class="col-5 mx-auto mb-5">
+      <%= form_with model:@event, url: host_events_path, method: :post do |f| %>
+        <%= f.hidden_field :title %>
+        <%= f.hidden_field :schedule_time %>
+        <%= f.hidden_field :comment %>
+          <%= f.fields_for :event_schedules do |i| %>
+            <%= i.hidden_field :candidate_date %>
+            <%= i.hidden_field :candidate_time_start %>
+            <%= i.hidden_field :candidate_time_end %>
+          <% end %>
+        <%= f.submit "イベント作成", class:"btn btn-success btn-sm btn-block" %>
+      <% end %>
+    </div>
+    <div class="col-5 mx-auto mb-5">
+      <%= form_with model:@event, url: host_events_back_path, method: :post do |f| %>
+        <%= f.hidden_field :title %>
+        <%= f.hidden_field :schedule_time %>
+        <%= f.hidden_field :comment %>
+          <%= f.fields_for :event_schedules do |i| %>
+            <%= i.hidden_field :candidate_date %>
+            <%= i.hidden_field :candidate_time_start %>
+            <%= i.hidden_field :candidate_time_end %>
+          <% end %>
+        <%= f.submit "もどる", class:"btn btn-success btn-sm btn-block" %>
+      <% end %>
+    </div>
   </div>
 </div>

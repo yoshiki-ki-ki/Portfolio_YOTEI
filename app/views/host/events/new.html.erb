@@ -2,37 +2,46 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">
       <%= form_with model: @event, url: host_events_event_cofirmation_path, method: :post do |f| %>
-        <div class="form-group">
-          <%= f.label :タイトル, class: "col-sm-2 col-form-label mr-5" %>
-          <%= f.text_field :title, placeholder: "", class: "mr-5" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :予定時間, class: "col-sm-2 col-form-label mr-5" %>
-          <%= f.text_field :schedule_time, placeholder: "約4時間", class: "mr-5" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :コメント, class: "col-sm-2 col-form-label mr-5" %>
-          <%= f.text_area :comment, placeholder: "##:##に○○駅に集合", class: "mr-5" %>
-        </div>
-
-        <div class="form-group">
-          <div class="mx-auto">
-            <%= f.fields_for :event_schedules do |event_schedule| %>
-              <%= render "event_schedule_fields", f: event_schedule %>
-            <% end %>
+        <div class="box">
+          <span class="box-title">基本情報を入力</span>
+          <div class="form-group col-sm-9">
+            <%= f.label :タイトル, class: "col-sm-2 col-form-label" %>
+            <%= f.text_field :title, placeholder: "飲み会", class: "form-control" %>
           </div>
-
-          <div id="detail-association-insertion-point"></div>
-
-          <div class="col-10 mx-auto mt-2">
-            <%= link_to_add_association "+候補日を追加", f, :event_schedules,
-            class: "btn btn-secondary btn-block",
-            data: {
-            association_insertion_node: '#detail-association-insertion-point'
-            }%>
+          <div class="form-group col-sm-9">
+            <%= f.label :予定時間, class: "col-sm-2 col-form-label" %>
+            <%= f.text_field :schedule_time, placeholder: "約4時間", class: "form-control" %>
+          </div>
+          <div class="form-group col-sm-9">
+            <%= f.label :備考, class: "col-sm-2 col-form-label" %>
+            <%= f.text_area :comment, placeholder: "○○駅に集合。焼き肉を食べに行く！", class: "form-control" %>
           </div>
         </div>
-        <%= f.submit '内容を確認', class: "btn btn-success" %>
+        <div class="box">
+          <span class="box-title">候補日を入力</span>
+          <div class="form-group col-sm-9">
+            <div class="mx-auto">
+              <%= f.fields_for :event_schedules do |event_schedule| %>
+                <%= render "event_schedule_fields", f: event_schedule %>
+              <% end %>
+            </div>
+
+            <div id="detail-association-insertion-point"></div>
+
+            <div class="col-10 mx-auto mt-2">
+              <%= link_to_add_association "+候補日を追加", f, :event_schedules,
+              class: "btn btn-secondary btn-block",
+              data: {
+              association_insertion_node: '#detail-association-insertion-point'
+              }%>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6 mx-auto mb-5">
+            <%= f.submit '内容を確認', class: "btn btn-success btn-sm btn-block" %>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>

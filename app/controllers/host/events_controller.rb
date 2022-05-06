@@ -5,6 +5,11 @@ class Host::EventsController < ApplicationController
     @event = Event.new
     @event_schedules = @event.event_schedules.build
   end
+  
+  def back
+    @event = Event.new(event_params)
+    render :new
+  end
 
   def event_cofirmation
     @event = Event.new(event_params)

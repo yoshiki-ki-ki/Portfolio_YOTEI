@@ -1,19 +1,19 @@
 <div class="container">
   <div class="box">
-    <div class="row mx-auto">
+    <div class="row">
       <span class="box-title">イベント</span>
-      <table class="table table-borderless">
+      <table class="table table-borderless mx-auto">
         <tr>
-          <th>タイトル</th>
-          <td>：<%= @event.title %></td>
+          <th class="w-25">タイトル</th>
+          <td><%= @event.title %></td>
         </tr>
         <tr>
-          <th>予定時間</th>
-          <td>：<%= @event.schedule_time %></td>
+          <th class="w-25">予定時間</th>
+          <td><%= @event.schedule_time %></td>
         </tr>
-        <tr>
-          <th>主催者からの<br>コメント</th>
-          <td>：<%= @event.comment %></td>
+        <tr class="text-break">
+          <th class="w-25">備考</th>
+          <td><%= @event.comment %></td>
         </tr>
       </table>
     </div>
@@ -39,7 +39,7 @@
     </div>
   </div>
   <div class="col-6 mx-auto">
-    <%= link_to "参加可否を入力", new_schedule_answer_path, class: "btn btn-success" %>
+    <%= link_to "参加可否を入力", new_schedule_answer_path, class: "btn btn-secondary" %>
   </div>
   <div class="box">
     <span class="box-title">参加者</span>

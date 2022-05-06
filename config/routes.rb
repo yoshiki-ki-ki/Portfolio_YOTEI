@@ -17,11 +17,10 @@ Rails.application.routes.draw do
     get '/mypage' => 'homes#index'
 
     post '/events/event_cofirmation'
+    post '/events/back'
     resources :events, only: [:new, :create, :update]
 
     get '/event_schedules/:id/schedule_confirmation' => 'event_schedules#schedule_confirmation' , as: 'schedule_confirmation_event_schedule'
-    # get '/event_schedules/:id' => 'event_schedules#show' , as: 'event_schedules'
-    # patch '/event_schedules/:id' => 'event_schedules#update' , as: 'update_event_schedules'
     resources :event_schedules, only: [:show]
   end
 
