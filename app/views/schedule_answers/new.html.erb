@@ -1,32 +1,46 @@
-<h4>参加可否の入力</h4>
-
-<%= form_with model: @guest, url: answer_confirmation_schedule_answer_path, method: :post do |f| %>
-  <div class="form-group">
-    <% @event.event_schedules.each_with_index do |event_schedule,index| %>
-      <div>
-        <%= event_schedule.candidate_date.strftime('%Y/%m/%d') %>
-        <%= event_schedule.candidate_time_start.strftime('%H:%M') %>
-        ～
-        <%= event_schedule.candidate_time_end.strftime('%H:%M') %>
-        <%= f.fields_for "guest_schedules[#{index}]" do |i| %>
-          <%= i.hidden_field :parent_schedule, :value => event_schedule.id %>
-          <%= i.radio_button :join_flag, true %>
-          <%= i.radio_button :join_flag, false %>×
+<div class="container">
+  <%= form_with model: @guest, url: answer_confirmation_schedule_answer_path, method: :post do |f| %>
+    <div class="box">
+      <span class="box-title">参加可否を選択</span>
+      <div class="form-group">
+        <% @event.event_schedules.each_with_index do |event_schedule,index| %>
+          <div>
+            ・<%= event_schedule.candidate_date.strftime('%Y/%m/%d') %>
+            <%= event_schedule.candidate_time_start.strftime('%H:%M') %>
+            ～
+            <%= event_schedule.candidate_time_end.strftime('%H:%M') %>
+            <%= f.fields_for "guest_schedules[#{index}]" do |i| %>
+              <%= i.hidden_field :parent_schedule, :value => event_schedule.id %>
+              <%= i.radio_button :join_flag, true, id: "OK[#{index}]", :style=>"display:none;" %>
+              <%= f.label :status_true, for: "OK[#{index}]" do %>
+                <i class="fas fa-thumbs-up size ml-3 mt-3"></i>
+              <% end %>
+              <%= i.radio_button :join_flag, false, id: "NG[#{index}]", :style=>"display:none;" %>
+              <%= f.label :status_false, for: "NG[#{index}]" do %>
+                <i class="fas fa-thumbs-down size ml-3 mt-3"></i>
+              <% end %>
+            <% end %>
+          </div>
         <% end %>
       </div>
-    <% end %>
-  </div>
-  <div class="form-group col-sm-9">
-    <%= f.label :ニックネーム, class: "col-sm-2 col-form-label" %>
-    <%= f.text_field :guest_name, placeholder: "", class: "form-control" %>
-  </div>
-  <div class="form-group col-sm-9">
-    <%= f.label :主催者へのコメント, class: "col-sm-2 col-form-label" %>
-    <%= f.text_field :comment_to_host, placeholder: "", class: "form-control" %>
-  </div>
-  <div class="form-group col-sm-9">
-    <%= f.label :パスワード, class: "col-sm-2 col-form-label" %>
-    <%= f.text_field :password, placeholder: "", class: "form-control" %>
-  </div>
-  <%= f.submit '回答を確認', class: "btn btn-success" %>
-<% end %>
+    </div>
+    <div class="box">
+      <span class="box-title">あなたの情報を入力</span>
+      <div class="form-group col-sm-9">
+        <%= f.label :ニックネーム（必須）, class: "col-sm-2 col-form-label" %>
+        <%= f.text_field :guest_name, placeholder: "", class: "form-control" %>
+      </div>
+      <div class="form-group col-sm-9">
+        <%= f.label :主催者へのコメント, class: "col-sm-2 col-form-label" %>
+        <%= f.text_area :comment_to_host, placeholder: "", class: "form-control" %>
+      </div>
+      <div class="form-group col-sm-9">
+        <%= f.label :パスワード（必須）※内容の確認や編集時に必要となります, class: "col-sm-2 col-form-label" %>
+        <%= f.text_field :password, placeholder: "", class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-6 mx-auto">
+      <%= f.submit '回答を確認', class: "btn btn-success btn-sm btn-block" %>
+    </div>
+  <% end %>
+</div>

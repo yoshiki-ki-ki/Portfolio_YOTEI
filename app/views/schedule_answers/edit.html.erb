@@ -1,40 +1,45 @@
 <div class="container">
-  <h4>回答内容の確認・編集</h4>
   <%= form_with model: @guest, url: update_schedule_answer_path, method: :patch do |f| %>
-    <div class="row">
+    <div class="box">
+      <span class="box-title">参加可否を編集</span>
       <div class="form-group">
         <% @event.event_schedules.each_with_index do |event_schedule,index| %>
           <div>
-            <%= event_schedule.candidate_date.strftime('%Y/%m/%d') %>
+            ・<%= event_schedule.candidate_date.strftime('%Y/%m/%d') %>
             <%= event_schedule.candidate_time_start.strftime('%H:%M') %>
             ～
             <%= event_schedule.candidate_time_end.strftime('%H:%M') %>
             <%= f.fields_for "guest_schedules[#{event_schedule.id}]" do |i| %>
-              <%= i.radio_button :join_flag, true, checked: @guest_schedules.find_by(event_schedule_id: event_schedule.id).join_flag ? true : false %>〇
-              <%= i.radio_button :join_flag, false, checked: @guest_schedules.find_by(event_schedule_id: event_schedule.id).join_flag ? false : true %>×
+              <%= i.radio_button :join_flag, true, id: "OK[#{index}]", :style=>"display:none;", checked: @guest_schedules.find_by(event_schedule_id: event_schedule.id).join_flag ? true : false %>
+              <%= f.label :status_true, for: "OK[#{index}]" do %>
+                <i class="fas fa-thumbs-up size ml-3 mt-3"></i>
+              <% end %>
+              <%= i.radio_button :join_flag, false, id: "NG[#{index}]", :style=>"display:none;", checked: @guest_schedules.find_by(event_schedule_id: event_schedule.id).join_flag ? false : true %>
+              <%= f.label :status_false, for: "NG[#{index}]" do %>
+                <i class="fas fa-thumbs-down size ml-3 mt-3"></i>
+              <% end %>
             <% end %>
           </div>
         <% end %>
       </div>
     </div>
-    <div class="row">
-      <div class="form-group">
-        <%= f.label :ニックネーム, class: "mr-5" %>
-        <%= f.text_field :guest_name, placeholder: "", class: "mr-5" %>
+    <div class="box">
+      <span class="box-title">あなたの情報を編集</span>
+      <div class="form-group col-sm-9">
+        <%= f.label :ニックネーム, class: "col-sm-2 col-form-label" %>
+        <%= f.text_field :guest_name, placeholder: "空欄にしないでください", class: "form-control" %>
       </div>
-      <div class="form-group">
-        <%= f.label :主催者へのコメント, class: "mr-5" %>
-        <%= f.text_field :comment_to_host, placeholder: "", class: "mr-5" %>
+      <div class="form-group col-sm-9">
+        <%= f.label :主催者へのコメント, class: "col-sm-2 col-form-label" %>
+        <%= f.text_area :comment_to_host, placeholder: "", class: "form-control" %>
       </div>
-      <div class="form-group">
-        <%= f.label :パスワード, class: "mr-5" %>
-        <%= f.text_field :password, placeholder: "", class: "mr-5" %>
+      <div class="form-group col-sm-9">
+        <%= f.label :パスワード, class: "col-sm-2 col-form-label" %>
+        <%= f.text_field :password, placeholder: "変更しない場合は空欄", class: "form-control" %>
       </div>
     </div>
-    <div class="row">
-      <div class="col-6 mx-auto">
-        <%= f.submit '更新', class: "btn btn-success" %>
-      </div>
+    <div class="col-6 mx-auto">
+      <%= f.submit '更新', class: "btn btn-success btn-sm btn-block" %>
     </div>
   <% end %>
   <div class="row d-flex justify-content-between">

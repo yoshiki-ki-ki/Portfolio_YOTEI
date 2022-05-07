@@ -14,6 +14,8 @@ class Host::EventsController < ApplicationController
   def event_cofirmation
     @event = Event.new(event_params)
     @event.host_id = current_host.id
+    return if @event.valid?
+    render :new
   end
 
   def create

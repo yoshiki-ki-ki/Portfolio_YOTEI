@@ -1,24 +1,40 @@
 <div class="container">
-  <h4>回答内容の確認</h4>
-  <div class="row">
-    ニックネーム
-    <%= @guest.guest_name %>
-    主催者へのコメント
-    <%= @guest.comment_to_host %>
-    パスワード
-    <%= @guest.password %>
-    参加可否
-    <% @guest_schedules.each do |guest_schedule| %>
-      <%= guest_schedule.event_schedule.candidate_date.strftime('%Y/%m/%d') %>
-      <%= guest_schedule.event_schedule.candidate_time_start.strftime('%H:%M') %>
-        ～
-      <%= guest_schedule.event_schedule.candidate_time_end.strftime('%H:%M') %>
-      <% if guest_schedule.join_flag == true %>
-    　<p>〇</p>
-      <% else %>
-      <p>×</p>
-      <% end %>
-    <% end %>
+  <div class="box">
+    <div class="row">
+      <span class="box-title">参加可否</span>
+      <div>
+        <% @guest_schedules.each do |guest_schedule| %>
+          ・<%= guest_schedule.event_schedule.candidate_date.strftime('%Y/%m/%d') %>
+          <%= guest_schedule.event_schedule.candidate_time_start.strftime('%H:%M') %>
+            ～
+          <%= guest_schedule.event_schedule.candidate_time_end.strftime('%H:%M') %>
+          <% if guest_schedule.join_flag == true %>
+        　<i class="fas fa-thumbs-up mr-3 mt-3"></i>参加できる
+          <% else %>
+          <i class="fas fa-thumbs-down ml-3 mr-3 mt-3"></i>参加できない
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="row">
+      <span class="box-title">あなたの情報</span>
+      <table class="table table-borderless mx-auto">
+        <tr>
+          <th class="w-50">ニックネーム</th>
+          <td><%= @guest.guest_name %></td>
+        </tr>
+        <tr class="text-break">
+          <th class="w-25">主催者へのコメント</th>
+          <td><%= @guest.comment_to_host %></td>
+        </tr>
+        <tr>
+          <th class="w-25">パスワード</th>
+          <td><%= @guest.password %></td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>
 <%= form_with model: @guest, url: create_schedule_answer_path, method: :post do |f| %>
@@ -30,5 +46,7 @@
         <%= i.hidden_field :join_flag %>
       <% end %>
     <% end %>
-  <%= f.submit '回答', class: "btn btn-success" %>
+  <div class="col-6 mx-auto">
+  <%= f.submit '回答', class: "btn btn-success btn-sm btn-block" %>
+  </div>
 <% end %>

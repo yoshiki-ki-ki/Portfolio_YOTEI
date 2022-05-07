@@ -45,3 +45,15 @@
   color: #95ccff;
   font-weight: bold;
 }
+
+input:checked + label {
+  color: green;
+}
+
+.size{
+  font-size:2em;
+}
+
+.size2{
+  font-size:1.5em;
+}
