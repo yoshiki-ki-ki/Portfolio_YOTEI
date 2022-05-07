@@ -49,7 +49,9 @@
             <%= f.hidden_field :dicision_date, :value => "" %>
             <%= f.hidden_field :decision_time_start, :value => "" %>
             <%= f.hidden_field :decision_time_end, :value => "" %>
-            <%= f.submit "取り消し", "data-confirm" => "本当に取り消しますか？", class:"btn btn-success" %>
+            <div class="col-7 mx-auto">
+              <%= f.submit "取り消し", "data-confirm" => "本当に取り消しますか？", class:"btn btn-light btn-sm btn-block" %>
+            </div>
           <% end %>
         <% end %>
       </div>
