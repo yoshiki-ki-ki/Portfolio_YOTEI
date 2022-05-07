@@ -1,7 +1,7 @@
 <div class="container">
   <%= form_with model: @guest, url: answer_confirmation_schedule_answer_path, method: :post do |f| %>
     <div class="box">
-      <span class="box-title">参加可否を選択</span>
+      <span class="box-title">【STEP1】参加可否を選択（必須）</span>
       <div class="form-group">
         <% @event.event_schedules.each_with_index do |event_schedule,index| %>
           <div>
@@ -25,18 +25,18 @@
       </div>
     </div>
     <div class="box">
-      <span class="box-title">あなたの情報を入力</span>
+      <span class="box-title">【STEP2】あなたの情報を入力</span>
       <div class="form-group col-sm-9">
         <%= f.label :ニックネーム（必須）, class: "col-sm-2 col-form-label" %>
-        <%= f.text_field :guest_name, placeholder: "", class: "form-control" %>
+        <%= f.text_field :guest_name, placeholder: "よてい　たてお", class: "form-control" %>
       </div>
       <div class="form-group col-sm-9">
         <%= f.label :主催者へのコメント, class: "col-sm-2 col-form-label" %>
-        <%= f.text_area :comment_to_host, placeholder: "", class: "form-control" %>
+        <%= f.text_area :comment_to_host, placeholder: "##:##から途中参加になりそうです。", class: "form-control" %>
       </div>
       <div class="form-group col-sm-9">
-        <%= f.label :パスワード（必須）※内容の確認や編集時に必要となります, class: "col-sm-2 col-form-label" %>
-        <%= f.text_field :password, placeholder: "", class: "form-control" %>
+        <%= f.label :パスワード（必須, class: "col-sm-2 col-form-label" %>
+        <%= f.text_field :password, placeholder: "※内容の編集時に必要となります", class: "form-control" %>
       </div>
     </div>
     <div class="col-6 mx-auto">

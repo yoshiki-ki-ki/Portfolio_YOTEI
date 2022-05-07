@@ -21,26 +21,44 @@
   <div class="row mx-auto">
     <div class="box">
       <span class="box-title">候補日</span>
-      <div class="col-sm-8 mx-auto">
-        <% @event_schedules.each do |event_schedule| %>
-          <div class="d-flex flex-sm-row bd-highlight mb-3">
-            <div class="p-2 bd-highlight">
-              ・<%= event_schedule.candidate_date.strftime('%Y/%m/%d') %>
-              <%= event_schedule.candidate_time_start.strftime('%H:%M') %>
-              ～
-              <%= event_schedule.candidate_time_end.strftime('%H:%M') %>
-              <% if host_signed_in? %>
-                <%= link_to "回答を見る", host_event_schedule_path(event_schedule.id), class: "btn btn-light" %>
-              <% end %>
+      <% @event_schedules.each do |event_schedule| %>
+        <div class="mt-3">
+          ・<%= event_schedule.candidate_date.strftime('%Y/%m/%d') %>
+          <%= event_schedule.candidate_time_start.strftime('%H:%M') %>
+          ～
+          <%= event_schedule.candidate_time_end.strftime('%H:%M') %>
+          <% if host_signed_in? %>
+            <div class="col-7 mx-auto">
+              <%= link_to "参加者の回答を見る", host_event_schedule_path(event_schedule.id), class: "btn btn-light btn-sm btn-block" %>
             </div>
-          </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <% if @event.dicision_date.present?%>
+    <div class="box3">
+      <span class="box-title2">予定日は下記で決定しました</span>
+      <div class="col-9 mx-auto my-3">
+        <%= @event.dicision_date.strftime('%Y/%m/%d') %>
+        <%= @event.decision_time_start.strftime('%H:%M') %>
+        ～
+        <%= @event.decision_time_end.strftime('%H:%M') %>
+        <% if host_signed_in? %>
+          <%= form_with model:@event, url: host_event_path(@event.id), method: :patch do |f| %>
+            <%= f.hidden_field :dicision_date, :value => "" %>
+            <%= f.hidden_field :decision_time_start, :value => "" %>
+            <%= f.hidden_field :decision_time_end, :value => "" %>
+            <%= f.submit "取り消し", "data-confirm" => "本当に取り消しますか？", class:"btn btn-success" %>
+          <% end %>
         <% end %>
       </div>
     </div>
-  </div>
-  <div class="col-6 mx-auto">
-    <%= link_to "参加可否を入力", new_schedule_answer_path, class: "btn btn-secondary btn-sm btn-block" %>
-  </div>
+  <% else %>
+    <div class="col-6 mx-auto">
+      <%= link_to "参加可否を入力", new_schedule_answer_path, class: "btn btn-secondary btn-sm btn-block" %>
+    </div>
+  <% end %>
   <div class="box">
     <span class="box-title">参加者</span>
     <div class="event_guest_list">
