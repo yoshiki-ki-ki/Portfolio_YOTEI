@@ -11,6 +11,12 @@
   margin: 10px;
 }
 
+.event_guest_list2 {
+  height: 400px;
+  overflow-y: scroll;
+  margin: 10px;
+}
+
 .guest_list {
   margin-left: 10px;
 }
@@ -42,6 +48,14 @@
   border-radius: 8px;
 }
 
+.box4 {
+    position: relative;
+    margin: 1em 0;
+    padding: 25px 10px 7px;
+    width: 100%;
+    border: solid 2px #FFC107;
+}
+
 .box-title {
   position: absolute;
   display: inline-block;
@@ -68,6 +82,20 @@
   font-weight: bold;
 }
 
+.box-title3 {
+    position: absolute;
+    display: inline-block;
+    top: -2px;
+    left: -2px;
+    padding: 0 9px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 17px;
+    background: #FFC107;
+    color: #ffffff;
+    font-weight: bold;
+}
+
 input:checked + label {
   color: green;
 }
@@ -78,4 +106,8 @@ input:checked + label {
 
 .size2{
   font-size:1.5em;
+}
+
+th {
+  font-weight: normal;
 }

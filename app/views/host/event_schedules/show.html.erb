@@ -1,32 +1,50 @@
 <div class="container">
-  <h4>みんなの回答を確認</h4>
-  <div class="row">
-    <div>
-      <%= @event_schedule.candidate_date.strftime('%Y/%m/%d') %>
-      <%= @event_schedule.candidate_time_start.strftime('%H:%M') %>
-      ～
-      <%= @event_schedule.candidate_time_end.strftime('%H:%M') %>
+  <div class="box">
+    <span class="box-title">日程</span>
+    <div class="row">
+      <div class="col-9 mx-auto my-3">
+        <%= @event_schedule.candidate_date.strftime('%Y/%m/%d') %>
+        <%= @event_schedule.candidate_time_start.strftime('%H:%M') %>
+        ～
+        <%= @event_schedule.candidate_time_end.strftime('%H:%M') %>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div>
-      <% @guests.each do |guest| %>
-        <div>
-          <%= guest.guest_name %>さん
-          参加者からのコメント<%= guest.comment_to_host %>
-          参加可否
-          <% @guest_schedules.each do |guest_schedule|%>
-            <% if guest.id == guest_schedule.guest_id %>
-              <% if guest_schedule.join_flag == true %>
-              <p>参加できる</p>
-              <% else %>
-              <p>参加できない</p>
+  <div class="box">
+    <span class="box-title">参加者の回答</span>
+    <div class="event_guest_list2">
+      <div class="row mx-2">
+        <% @guests.each do |guest| %>
+          <div class="box4">
+            <span class="box-title3">
+              <%= guest.guest_name %>さんの回答
+            </span>
+            <div class="ml-2">
+              <% @guest_schedules.each do |guest_schedule|%>
+                <% if guest.id == guest_schedule.guest_id %>
+                  <% if guest_schedule.join_flag == true %>
+                    参加できる<i class="fas fa-thumbs-up size ml-3 mt-3" data-fa-transform="right-14 down-2"></i>
+                  <% else %>
+                    参加できない<i class="fas fa-thumbs-down size mt-3" data-fa-transform="right-14 down-6"></i>
+                  <% end %>
+                <% end %>
               <% end %>
-            <% end %>
-          <% end %>
-        </div>
-      <% end %>
+            </div>
+            <table class="table table-borderless mx-auto mt-3">
+              <tr class="text-break">
+                <th class="w-50">コメント</th>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="2"><%= guest.comment_to_host %></td>
+              </tr>
+            </table>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-  <%= link_to "この日に決定する", host_schedule_confirmation_event_schedule_path, class: "btn btn-light" %>
+  <div class="col-6 mx-auto">
+    <%= link_to "この日に決定する", host_schedule_confirmation_event_schedule_path, class: "btn btn-light btn-sm btn-block" %>
+  </div>
 </div>
