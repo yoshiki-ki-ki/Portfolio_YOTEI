@@ -10,7 +10,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @event.each do |event| %>
+        <% @events.each do |event| %>
           <tr>
             <td><%= event.created_at.strftime('%Y/%m/%d %H:%M') %></td>
             <td>
@@ -20,7 +20,10 @@
             </td>
             <td>
               <% unless event.dicision_date.nil? %>
-                <%= event.dicision_date.strftime('%Y/%m/%d') %> <%= event.decision_time_start.strftime('%H:%M') %>～<%= event.decision_time_end.strftime('%H:%M') %>
+                <%= event.dicision_date.strftime('%Y/%m/%d') %>
+                <%= event.decision_time_start.strftime('%H:%M') %>
+                ～
+                <%= event.decision_time_end.strftime('%H:%M') %>
               <% else %>
                 None
               <% end %>
@@ -31,7 +34,7 @@
       </tbody>
     </table>
     <div class="mx-auto">
-      <%= paginate @event %>
+      <%= paginate @events %>
     </div>
   </div>
 </div>

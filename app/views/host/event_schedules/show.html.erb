@@ -9,6 +9,16 @@
         <%= @event_schedule.candidate_time_end.strftime('%H:%M') %>
       </div>
     </div>
+    <div class="row">
+      <div class="mx-auto mb-3">
+        <i class="fas fa-thumbs-up size m-2" data-fa-transform="down-6"></i>
+        :<%= @guest_schedules.where(join_flag: true).length %>人
+      </div>
+      <div class="mx-auto">
+        <i class="fas fa-thumbs-down size m-2" data-fa-transform="down-8"></i>
+        :<%= @guest_schedules.where(join_flag: false).length %>人
+      </div>
+    </div>
   </div>
   <div class="box">
     <span class="box-title">参加者の回答</span>
@@ -44,7 +54,7 @@
       </div>
     </div>
   </div>
-  <div class="col-6 mx-auto">
+  <div class="col-6 mx-auto mb-5">
     <%= link_to "この日に決定する", host_schedule_confirmation_event_schedule_path, class: "btn btn-light btn-sm btn-block" %>
   </div>
 </div>

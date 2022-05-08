@@ -1,16 +1,29 @@
 <div class="container">
+  <div class="box">
+    <span class="box-title">この日程で確定しますか？</span>
+    <div class="row">
+      <div class="col-9 mx-auto my-3">
+        <%= @event_schedule.candidate_date.strftime('%Y/%m/%d') %>
+        <%= @event_schedule.candidate_time_start.strftime('%H:%M') %>
+        ～
+        <%= @event_schedule.candidate_time_end.strftime('%H:%M') %>
+      </div>
+      <div class="mx-auto">
+        <p>※日程を確定すると<br>　参加可否の入力が出来なくなります。</p>
+      </div>
+    </div>
+  </div>
   <div class="row">
-      <%= @event_schedule.candidate_date.strftime('%Y/%m/%d') %>
-      <%= @event_schedule.candidate_time_start.strftime('%H:%M') %>
-      ～
-      <%= @event_schedule.candidate_time_end.strftime('%H:%M') %>
-    <h4>この日に決定しますか？</h4>
-    <%= form_with model:@event, url: host_event_path, method: :patch do |f| %>
-      <%= f.hidden_field :dicision_date, :value => @dicision_date %>
-      <%= f.hidden_field :decision_time_start, :value => @decision_time_start %>
-      <%= f.hidden_field :decision_time_end, :value => @decision_time_end %>
-      <%= f.submit "はい", class:"btn btn-success" %>
-    <% end %>
-    <%= link_to "いいえ", schedule_path(token: @event.token), class: "btn btn-success" %>
+    <div class="col-4 mx-auto">
+      <%= form_with model:@event, url: host_event_path, method: :patch do |f| %>
+        <%= f.hidden_field :dicision_date, :value => @dicision_date %>
+        <%= f.hidden_field :decision_time_start, :value => @decision_time_start %>
+        <%= f.hidden_field :decision_time_end, :value => @decision_time_end %>
+        <%= f.submit "確定", class:"btn btn-success btn-sm btn-block" %>
+      <% end %>
+    </div>
+    <div class="col-4 mx-auto">
+      <%= link_to "もどる", schedule_path(token: @event.token), class: "btn btn-success btn-sm btn-block" %>
+    </div>
   </div>
 </div>
