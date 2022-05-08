@@ -62,6 +62,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # ログイン機能など
 gem 'devise'
+gem 'devise-i18n'
 
 # フォームの追加削除機能
 gem 'cocoon'

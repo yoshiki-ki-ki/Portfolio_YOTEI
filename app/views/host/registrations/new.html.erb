@@ -4,30 +4,33 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "host/shared/error_messages", resource: resource %>
     
-      <div class="form-group col-sm-9">
+      <div class="form-group col-sm-9 mx-auto">
         <%= f.label :name, class: "col-sm-2 col-form-label" %><br />
         <%= f.text_field :host_name, autofocus: true, autocomplete: "host_name", placeholder: "", class: "form-control" %>
       </div>
     
-      <div class="form-group col-sm-9">
+      <div class="form-group col-sm-9 mx-auto">
         <%= f.label :email, class: "col-sm-2 col-form-label" %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "", class: "form-control" %>
       </div>
     
-      <div class="form-group col-sm-9">
-        <%= f.label :password　※6文字以上, class: "col-sm-2 col-form-label" %>
+      <div class="form-group col-sm-9 mx-auto">
+        <%= f.label :password　※6文字以上, class: "col-sm-2 col-lg-4 col-form-label" %>
         <%= f.password_field :password, autocomplete: "new-password", placeholder: "", class: "form-control" %>
       </div>
     
-      <div class="form-group col-sm-9">
-        <%= f.label :password　※確認用, class: "col-sm-2 col-form-label" %><br />
+      <div class="form-group col-sm-9 mx-auto">
+        <%= f.label :password　※確認用, class: "col-sm-2  col-lg-4 col-form-label" %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "", class: "form-control" %>
       </div>
     
-      <div class="col-6 mx-auto">
+      <div class="col-6 mx-auto mb-2">
         <%= f.submit "Sign up", class: "btn btn-secondary btn-sm btn-block" %>
       </div>
     <% end %>
   </div>
+  <div class="ml-2">
+    ログインは<%= render "host/shared/links" %>から
+  </div>
 </div>
-<%= render "host/shared/links" %>
+
