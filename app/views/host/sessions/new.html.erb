@@ -2,7 +2,6 @@
   <div class="box">
     <span class="box-title">ログイン</span>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    
       <div class="form-group col-sm-9　mx-auto">
         <%= f.label :name, class: "col-sm-2 col-form-label" %>
         <%= f.text_field :host_name, autofocus: true, autocomplete: "host_name", placeholder: "よてい　たてお", class: "form-control" %>
