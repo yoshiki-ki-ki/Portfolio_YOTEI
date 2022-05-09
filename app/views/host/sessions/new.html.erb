@@ -1,6 +1,8 @@
 <div class="container">
   <div class="box">
     <span class="box-title">ログイン</span>
+      <p class="notice"><%= notice %></p>
+  　   <p class="alert"><%= alert %></p>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-group col-sm-9　mx-auto">
         <%= f.label :name, class: "col-sm-2 col-form-label" %>

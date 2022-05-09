@@ -1,4 +1,7 @@
 <div class="container">
+  <div class="ml-5 red">
+    <%= flash[:danger] %>
+  </div>
   <%= form_with model: @guest, url: answer_confirmation_schedule_answer_path, method: :post do |f| %>
     <div class="box">
       <span class="box-title">【STEP1】参加可否を選択（必須）</span>
@@ -31,11 +34,11 @@
         <%= f.text_field :guest_name, placeholder: "よてい　たてお", class: "form-control" %>
       </div>
       <div class="form-group col-sm-9">
-        <%= f.label :主催者へのコメント, class: "col-sm-2 col-form-label" %>
+        <%= f.label :主催者へのコメント（任意）, class: "col-sm-2 col-form-label" %>
         <%= f.text_area :comment_to_host, placeholder: "##:##から途中参加になりそうです。", class: "form-control" %>
       </div>
       <div class="form-group col-sm-9">
-        <%= f.label :パスワード（必須, class: "col-sm-2 col-form-label" %>
+        <%= f.label :パスワード（必須）, class: "col-sm-2 col-form-label" %>
         <%= f.text_field :password, placeholder: "※内容の編集時に必要となります", class: "form-control" %>
       </div>
     </div>

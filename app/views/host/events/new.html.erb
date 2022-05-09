@@ -1,4 +1,7 @@
 <div class="container">
+  <div class="ml-5 red">
+    <%= flash[:danger] %>
+  </div>
   <div class="row">
     <div class="col-lg-8 mx-auto">
       <%= form_with model: @event, url: host_events_event_cofirmation_path, method: :post do |f| %>

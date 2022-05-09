@@ -18,8 +18,9 @@ class ScheduleAnswersController < ApplicationController
       guest_schedule.join_flag = guest_schedule_params[1]["join_flag"]
       @guest_schedules.push(guest_schedule)
     end
-    # return if @guest.valid?
-    # render :new
+    return if @guest.valid?
+    flash.now[:danger] = '必須項目の入力をお願いします'
+    render :new
   end
 
   def create

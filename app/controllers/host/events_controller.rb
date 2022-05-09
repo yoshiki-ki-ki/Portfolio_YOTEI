@@ -15,6 +15,7 @@ class Host::EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.host_id = current_host.id
     return if @event.valid?
+    flash.now[:danger] = '必須項目の入力をお願いします'
     render :new
   end
 

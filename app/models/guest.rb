@@ -1,4 +1,6 @@
 class Guest < ApplicationRecord
+  validates :guest_name, presence: true
+  validates :password, presence: true
   belongs_to :event
   has_many :guest_schedules, dependent: :destroy
 

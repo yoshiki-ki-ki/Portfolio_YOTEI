@@ -2,17 +2,19 @@
   <div class="box">
     <div class="row">
       <span class="box-title">参加可否</span>
-      <div>
+      <div class="mx-auto">
         <% @guest_schedules.each do |guest_schedule| %>
-          ・<%= guest_schedule.event_schedule.candidate_date.strftime('%Y/%m/%d') %>
-          <%= guest_schedule.event_schedule.candidate_time_start.strftime('%H:%M') %>
-            ～
-          <%= guest_schedule.event_schedule.candidate_time_end.strftime('%H:%M') %>
-          <% if guest_schedule.join_flag == true %>
-        　<i class="fas fa-thumbs-up mr-3 mt-3"></i>参加できる
-          <% else %>
-          <i class="fas fa-thumbs-down ml-3 mr-3 mt-3"></i>参加できない
-          <% end %>
+          <div>
+            ・<%= guest_schedule.event_schedule.candidate_date.strftime('%Y/%m/%d') %>
+            <%= guest_schedule.event_schedule.candidate_time_start.strftime('%H:%M') %>
+              ～
+            <%= guest_schedule.event_schedule.candidate_time_end.strftime('%H:%M') %>
+            <% if guest_schedule.join_flag == true %>
+          　<i class="fas fa-thumbs-up mr-3 mt-3"></i>参加できる
+            <% else %>
+            <i class="fas fa-thumbs-down ml-3 mr-3 mt-3"></i>参加できない
+            <% end %>
+          </div>
         <% end %>
       </div>
     </div>
