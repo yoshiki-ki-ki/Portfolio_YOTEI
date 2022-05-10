@@ -6,6 +6,12 @@ class ScheduleAnswersController < ApplicationController
     @event = Event.find_by(token: params[:token])
   end
 
+  def back
+    @guest = Guest.new(guest_params)
+    @event = Event.find_by(token: params[:token])
+    render :new
+  end
+
   def answer_confirmation
     @guest = Guest.new(guest_params)
     @event = Event.find_by(token: params[:token])

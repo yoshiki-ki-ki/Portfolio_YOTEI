@@ -7,22 +7,22 @@
       <%= form_with model: @event, url: host_events_event_cofirmation_path, method: :post do |f| %>
         <div class="box">
           <span class="box-title">【STEP1】基本情報を入力</span>
-          <div class="form-group col-sm-9">
-            <%= f.label :タイトル（必須）, class: "col-sm-2 col-form-label" %>
+          <div class="form-group col-sm-9 mx-auto">
+            <%= f.label :タイトル（必須）, class: "col-form-label" %>
             <%= f.text_field :title, placeholder: "飲み会", class: "form-control" %>
           </div>
-          <div class="form-group col-sm-9">
-            <%= f.label :予定時間, class: "col-sm-2 col-form-label" %>
+          <div class="form-group col-sm-9 mx-auto">
+            <%= f.label :予定時間, class: "col-form-label" %>
             <%= f.text_field :schedule_time, placeholder: "約4時間", class: "form-control" %>
           </div>
-          <div class="form-group col-sm-9">
-            <%= f.label :備考, class: "col-sm-2 col-form-label" %>
+          <div class="form-group col-sm-9 mx-auto">
+            <%= f.label :備考, class: "col-form-label" %>
             <%= f.text_area :comment, placeholder: "○○駅に集合。焼き肉を食べに行く！", class: "form-control" %>
           </div>
         </div>
         <div class="box">
           <span class="box-title">【STEP2】候補日を入力（必須）</span>
-          <div class="form-group col-sm-9">
+          <div class="form-group col-sm-9 mx-auto">
             <div class="mx-auto">
               <%= f.fields_for :event_schedules do |event_schedule| %>
                 <%= render "event_schedule_fields", f: event_schedule %>

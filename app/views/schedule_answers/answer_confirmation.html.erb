@@ -38,17 +38,27 @@
       </table>
     </div>
   </div>
-</div>
-<%= form_with model: @guest, url: create_schedule_answer_path, method: :post do |f| %>
-  <%= f.hidden_field :guest_name %>
-  <%= f.hidden_field :comment_to_host %>
-  <%= f.hidden_field :password %>
-    <% @event.guests.each_with_index do |_,index| %>
-      <%= f.fields_for "guest_schedules[#{index}]" do |i| %>
-        <%= i.hidden_field :join_flag %>
+  <div class="row">
+    <div class="col-5 mx-auto mb-5">
+      <%= form_with model: @guest, url: create_schedule_answer_path, method: :post do |f| %>
+        <%= f.hidden_field :guest_name %>
+        <%= f.hidden_field :comment_to_host %>
+        <%= f.hidden_field :password %>
+          <% @event.guests.each_with_index do |_,index| %>
+            <%= f.fields_for "guest_schedules[#{index}]" do |i| %>
+              <%= i.hidden_field :join_flag %>
+            <% end %>
+          <% end %>
+        <%= f.submit '回答', class: "btn btn-success btn-sm btn-block" %>
       <% end %>
-    <% end %>
-  <div class="col-6 mx-auto">
-  <%= f.submit '回答', class: "btn btn-success btn-sm btn-block" %>
+    </div>
+    <div class="col-5 mx-auto mb-5">
+      <%= form_with model:@guest, url: back_schedule_answer_path, method: :post do |f| %>
+        <%= f.hidden_field :guest_name %>
+        <%= f.hidden_field :comment_to_host %>
+        <%= f.hidden_field :password %>
+        <%= f.submit "もどる", class:"btn btn-success btn-sm btn-block" %>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>
