@@ -9,6 +9,7 @@ class ScheduleAnswersController < ApplicationController
   def answer_confirmation
     @guest = Guest.new(guest_params)
     @event = Event.find_by(token: params[:token])
+    @guest.event = @event
     session[:guest_schedules] = params[:guest][:guest_schedules].to_unsafe_h
     @guest_schedules = []
     session[:guest_schedules].each_with_index do |guest_schedule_params,i|
@@ -17,6 +18,13 @@ class ScheduleAnswersController < ApplicationController
       guest_schedule.event_schedule_id = guest_schedule_params[1]["parent_schedule"].to_i
       guest_schedule.join_flag = guest_schedule_params[1]["join_flag"]
       @guest_schedules.push(guest_schedule)
+    end
+    @guest_schedules.each do |guest_schedule|
+      unless guest_schedule.valid?
+        flash.now[:danger] = '必須項目の入力をお願いします'
+        render :new
+        return
+      end
     end
     return if @guest.valid?
     flash.now[:danger] = '必須項目の入力をお願いします'

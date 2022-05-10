@@ -25,12 +25,27 @@ ja:
               confirmation: "が内容とあっていません。"
             password_confirmation:
               confirmation: "と再入力パスワードが一致しません。"
+        guest:
+          attributes:
+            guest_name:
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
     attributes:
       host:
         current_password: "現在のパスワード"
         host_name: "Name"
         password: "Password"
         remember_me: "次回から自動的にログイン"
+      guest:
+        guest_name: "名前"
     models:
       host: "アカウント"
       password_confirmation: "Password"

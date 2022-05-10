@@ -23,12 +23,12 @@
       <span class="box-title">候補日</span>
       <div class="col-sm-8 mx-auto">
         <% @event.event_schedules.each do |event_schedule| %>
-          <td>
+          <div>
            ・<%= event_schedule.candidate_date.strftime('%Y/%m/%d') %>
             <%= event_schedule.candidate_time_start.strftime('%H:%M') %>
             ～
             <%= event_schedule.candidate_time_end.strftime('%H:%M') %>
-          </td>
+          </div>
         <% end %>
         </div>
     </div>
