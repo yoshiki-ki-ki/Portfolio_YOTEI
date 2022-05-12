@@ -45,7 +45,7 @@
         ～
         <%= @event.decision_time_end.strftime('%H:%M') %>
         <% if host_signed_in? %>
-          <%= form_with model:@event, url: host_event_path(@event.id), method: :patch do |f| %>
+          <%= form_with model: @event, url: host_path(@event.id), method: :patch do |f| %>
             <%= f.hidden_field :dicision_date, :value => "" %>
             <%= f.hidden_field :decision_time_start, :value => "" %>
             <%= f.hidden_field :decision_time_end, :value => "" %>
@@ -58,7 +58,7 @@
     </div>
   <% else %>
     <div class="col-6 mx-auto">
-      <%= link_to "参加可否を入力", new_schedule_answer_path, class: "btn btn-secondary btn-sm btn-block" %>
+      <%= link_to "参加可否を回答", new_schedule_answer_path, class: "btn btn-secondary btn-sm btn-block" %>
     </div>
   <% end %>
   <div class="box">
@@ -66,7 +66,7 @@
     <div class="event_guest_list">
       <% @guest.each do |guest| %>
         <div class="guest_list">
-          <%= link_to guest.guest_name, answer_schedule_answer_path(guest.id) %>さんが参加可否の回答をしました。
+          <%= link_to guest.guest_name, answer_schedule_answer_path(guest.id) %>さんが回答しました。
         </div>
       <% end %>
     </div>

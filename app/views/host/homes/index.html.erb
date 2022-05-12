@@ -1,40 +1,46 @@
 <div class="container">
-  <div class="row">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th scope="col">作成日</th>
-          <th scope="col">タイトル</th>
-          <th scope="col">決定日時</th>
-          <th scope="col">回答者数</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @events.each do |event| %>
+  <div class="box">
+    <span class="box-title">イベント履歴</span>
+    <div class="row">
+      <table class="table small">
+        <thead>
           <tr>
-            <td><%= event.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-            <td>
-              <%= link_to schedule_path(token: event.token) do %>
-                <%= event.title %>
-              <% end %>
-            </td>
-            <td>
-              <% unless event.dicision_date.nil? %>
-                <%= event.dicision_date.strftime('%Y/%m/%d') %>
-                <%= event.decision_time_start.strftime('%H:%M') %>
-                ～
-                <%= event.decision_time_end.strftime('%H:%M') %>
-              <% else %>
-                None
-              <% end %>
-            </td>
-            <td><%= event.guests.count %></td>
+            <th scope="col" style="width: 20%">作成日</th>
+            <th scope="col" style="width: 20%">タイトル</th>
+            <th scope="col" style="width: 20%">決定日時</th>
+            <th scope="col" style="width: 15%">回答</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <div class="mx-auto">
-      <%= paginate @events %>
+        </thead>
+        <tbody>
+          <% @events.each do |event| %>
+            <tr>
+              <td>
+                <%= event.created_at.strftime('%Y/%m/%d') %><br>
+                <%= event.created_at.strftime('%H:%M') %>
+              </td>
+              <td>
+                <%= link_to schedule_path(token: event.token) do %>
+                  <%= event.title %>
+                <% end %>
+              </td>
+              <td>
+                <% unless event.dicision_date.nil? %>
+                  <%= event.dicision_date.strftime('%Y/%m/%d') %><br>
+                  <%= event.decision_time_start.strftime('%H:%M') %>
+                  ～
+                  <%= event.decision_time_end.strftime('%H:%M') %>
+                <% else %>
+                  None
+                <% end %>
+              </td>
+              <td><%= event.guests.count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="mx-auto">
+        <%= paginate @events %>
+      </div>
     </div>
   </div>
 </div>

@@ -4,12 +4,15 @@
       <%= @guest.guest_name %>さんの回答内容確認・編集
     </span>
     <%= form_with model: @guest, url: answer_pass_schedule_answer_path, method: :post do |f| %>
-      <div class="form-group col-sm-9 mt-5">
+      <div class="form-group col-sm-9 mt-5 mx-auto">
         <%= f.password_field :password, placeholder: "パスワードを入力してください", class: 'form-control' %>
       </div>
       <div class="col-6 mt-4 mx-auto">
-        <%= f.submit '確認・編集', class: "btn btn-success" %>
+        <%= f.submit '確認・編集', class: "btn btn-secondary btn-sm btn-block" %>
       </div>
     <% end %>
+  </div>
+  <div class="col-6 mx-auto mb-5">
+    <%= link_to "もどる", :back, class: "btn btn-light btn-sm btn-block" %>
   </div>
 </div>

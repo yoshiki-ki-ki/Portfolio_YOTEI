@@ -12,6 +12,4 @@ class Host::EventSchedulesController < ApplicationController
     @decision_time_start = @event_schedule.candidate_time_start
     @decision_time_end = @event_schedule.candidate_time_end
   end
-
-
 end

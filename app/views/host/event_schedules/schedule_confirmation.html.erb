@@ -14,16 +14,16 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-4 mx-auto">
+    <div class="col-6 mx-auto">
       <%= form_with model:@event, url: host_event_path, method: :patch do |f| %>
         <%= f.hidden_field :dicision_date, :value => @dicision_date %>
         <%= f.hidden_field :decision_time_start, :value => @decision_time_start %>
         <%= f.hidden_field :decision_time_end, :value => @decision_time_end %>
-        <%= f.submit "確定", class:"btn btn-success btn-sm btn-block" %>
+        <%= f.submit "確定", class:"btn btn-secondary btn-sm btn-block" %>
       <% end %>
     </div>
-    <div class="col-4 mx-auto">
-      <%= link_to "もどる", schedule_path(token: @event.token), class: "btn btn-success btn-sm btn-block" %>
+    <div class="col-6 mx-auto">
+      <%= link_to "もどる", schedule_path(token: @event.token), class: "btn btn-light btn-sm btn-block" %>
     </div>
   </div>
 </div>

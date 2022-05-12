@@ -5,7 +5,7 @@ class Host::EventsController < ApplicationController
     @event = Event.new
     @event_schedules = @event.event_schedules.build
   end
-  
+
   def back
     @event = Event.new(event_params)
     render :new
@@ -31,6 +31,13 @@ class Host::EventsController < ApplicationController
     @event = @event_schedule.event
     @event.update(event_params)
     redirect_to schedule_path(token: @event.token)
+  end
+  
+  def update_nill
+    @event = Event.find(params[:id])
+    @event.update(event_params)
+    redirect_to schedule_path(token: @event.token)
+    binding.pry
   end
 
   private

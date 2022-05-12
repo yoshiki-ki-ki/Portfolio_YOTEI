@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
     post '/events/event_cofirmation'
     post '/events/back'
+    patch '/events/update_nill/:id' => 'events#update_nill'
     resources :events, only: [:new, :create, :update]
 
     get '/event_schedules/:id/schedule_confirmation' => 'event_schedules#schedule_confirmation' , as: 'schedule_confirmation_event_schedule'

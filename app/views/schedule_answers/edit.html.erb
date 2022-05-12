@@ -39,11 +39,15 @@
       </div>
     </div>
     <div class="col-6 mx-auto">
-      <%= f.submit '更新', class: "btn btn-success btn-sm btn-block" %>
+      <%= f.submit '更新', class: "btn btn-secondary btn-sm btn-block" %>
     </div>
   <% end %>
-  <div class="row d-flex justify-content-between">
-    <%= link_to '回答を削除', destroy_schedule_answer_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
-    <%= link_to "もどる", schedule_path(token: @event.token), class: "btn btn-success" %>
+  <div class="row">
+    <div class="col-6 mx-auto mt-5">
+      <%= link_to '回答を削除', destroy_schedule_answer_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-light btn-sm btn-block" %>
+    </div>
+    <div class="col-6 mx-auto mt-5">
+      <%= link_to "もどる", schedule_path(token: @event.token), class: "btn btn-light btn-sm btn-block" %>
+    </div>
   </div>
 </div>
