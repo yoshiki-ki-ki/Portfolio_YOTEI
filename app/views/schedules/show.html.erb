@@ -57,10 +57,13 @@
       </div>
     </div>
   <% else %>
-    <div class="col-6 mx-auto">
+    <div class="col-6 mx-auto my-5">
       <%= link_to "参加可否を回答", new_schedule_answer_path, class: "btn btn-secondary btn-sm btn-block" %>
     </div>
   <% end %>
+  <div class="balloon1 col">
+    <small>名前をクリックで回答内容の確認・編集ができます</small>
+  </div>
   <div class="box">
     <span class="box-title">参加者</span>
     <div class="event_guest_list">

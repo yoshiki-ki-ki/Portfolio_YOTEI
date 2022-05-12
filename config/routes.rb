@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root to: 'homes#top'
-  get '/manual' => 'homes#manual'
 
   get '/schedules/:token' => 'schedules#show' , as: 'schedule', param: :token
 
