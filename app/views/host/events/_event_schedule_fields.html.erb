@@ -1,14 +1,18 @@
 <div class="nested-fields">
   <div class="box2">
-    <div class="row mx-auto">
-      <div class="form-group col-sm-3 col-lg-10">
+    <div class="row">
+      <div class="form-group col-11 mx-auto">
         <%= f.date_field :candidate_date, min: Date.today, class: "form-control" %>
       </div>
-      <div class="form-group col-sm-3 col-lg-12 mt-1">
+    </div>
+    <div class="row">
+      <div class="form-group mx-auto">
         <%= f.time_select :candidate_time_start, minute_step: 10, class: "form-control" %>
         ～
         <%= f.time_select :candidate_time_end, minute_step: 10, class: "form-control" %>
-        <%= link_to_remove_association "削除", f, class: "btn btn-outline-secondary btn-block mt-3" %>
+      </div>
+      <div class="form-group col-11 mx-auto">
+        <%= link_to_remove_association "削除", f, class: "btn btn-outline-secondary btn-block" %>
       </div>
     </div>
   </div>
