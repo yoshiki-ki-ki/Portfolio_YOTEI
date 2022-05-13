@@ -32,12 +32,11 @@ class Host::EventsController < ApplicationController
     @event.update(event_params)
     redirect_to schedule_path(token: @event.token)
   end
-  
+
   def update_nill
     @event = Event.find(params[:id])
     @event.update(event_params)
     redirect_to schedule_path(token: @event.token)
-    binding.pry
   end
 
   private
