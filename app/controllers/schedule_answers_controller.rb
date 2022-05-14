@@ -71,13 +71,19 @@ class ScheduleAnswersController < ApplicationController
     @guest = Guest.find(params[:id])
     @event = @guest.event
     @guest_schedules = @guest.guest_schedules
-    pp @guest_schedules
   end
 
   def update
     @guest = Guest.find(params[:id])
     @event = @guest.event
-    @guest.update(guest_params)
+    unless @guest.update(guest_params)
+      flash.now[:danger] = '必須項目の入力をお願いします'
+      @guest = Guest.find(params[:id])
+      @event = @guest.event
+      @guest_schedules = @guest.guest_schedules
+      render :edit
+      return
+    end
     params[:guest][:guest_schedules].each do |k, v|
       GuestSchedule.find_by(guest_id: @guest.id, event_schedule_id: k).update(join_flag: v[:join_flag])
     end

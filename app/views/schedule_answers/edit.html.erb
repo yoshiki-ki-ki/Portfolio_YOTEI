@@ -24,18 +24,22 @@
       </div>
     </div>
     <div class="box">
+      <h1>フォームを空白にするとエラーは出ないものの編集が反映されない。</h1>
+        <div class="ml-5 red">
+          <%= flash[:danger] %>
+        </div>
       <span class="box-title">あなたの情報を編集</span>
-      <div class="form-group col-sm-9">
-        <%= f.label :ニックネーム, class: "col-sm-2 col-form-label" %>
-        <%= f.text_field :guest_name, placeholder: "空欄にしないでください", class: "form-control" %>
+      <div class="form-group col-sm-9 mx-auto">
+        <%= f.label :ニックネーム（必須）, class: "col-form-label" %>
+        <%= f.text_field :guest_name, placeholder: "", class: "form-control" %>
       </div>
-      <div class="form-group col-sm-9">
-        <%= f.label :主催者へのコメント, class: "col-sm-2 col-form-label" %>
+      <div class="form-group col-sm-9 mx-auto">
+        <%= f.label :主催者へのコメント, class: "col-form-label" %>
         <%= f.text_area :comment_to_host, placeholder: "", class: "form-control" %>
       </div>
-      <div class="form-group col-sm-9">
-        <%= f.label :パスワード, class: "col-sm-2 col-form-label" %>
-        <%= f.text_field :password, placeholder: "変更しない場合は空欄", class: "form-control" %>
+      <div class="form-group col-sm-9 mx-auto">
+        <%= f.label :パスワード（必須）, class: "col-form-label" %>
+        <%= f.text_field :password, placeholder: "再入力or新規設定してください", class: "form-control" %>
       </div>
     </div>
     <div class="col-6 mx-auto">
@@ -43,10 +47,10 @@
     </div>
   <% end %>
   <div class="row">
-    <div class="col-6 mx-auto mt-5">
+    <div class="col-6 mx-auto my-5">
       <%= link_to '回答を削除', destroy_schedule_answer_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-light btn-sm btn-block" %>
     </div>
-    <div class="col-6 mx-auto mt-5">
+    <div class="col-6 mx-auto my-5">
       <%= link_to "もどる", schedule_path(token: @event.token), class: "btn btn-light btn-sm btn-block" %>
     </div>
   </div>
