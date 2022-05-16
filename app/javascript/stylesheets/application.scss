@@ -1,5 +1,6 @@
-@import '~bootstrap/scss/bootstrap';
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import "~bootstrap/scss/bootstrap";
+
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
 
 .event_guest_list_field {
   width: 100%;
@@ -30,14 +31,14 @@
   border-radius: 8px;
 }
 
-.box2{
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    width: 100%;
-    color: #5d627b;
-    background: white;
-    border-top: solid 5px #95ccff;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+.box2 {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  width: 100%;
+  color: #5d627b;
+  background: white;
+  border-top: solid 5px #95ccff;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 }
 
 .box3 {
@@ -50,11 +51,11 @@
 }
 
 .box4 {
-    position: relative;
-    margin: 1em 0;
-    padding: 25px 10px 7px;
-    width: 100%;
-    border: solid 2px #FFC107;
+  position: relative;
+  margin: 1em 0;
+  padding: 25px 10px 7px;
+  width: 100%;
+  border: solid 2px #FFC107;
 }
 
 .box-title {
@@ -84,29 +85,29 @@
 }
 
 .box-title3 {
-    position: absolute;
-    display: inline-block;
-    top: -2px;
-    left: -2px;
-    padding: 0 9px;
-    height: 25px;
-    line-height: 25px;
-    font-size: 17px;
-    background: #FFC107;
-    color: #ffffff;
-    font-weight: bold;
+  position: absolute;
+  display: inline-block;
+  top: -2px;
+  left: -2px;
+  padding: 0 9px;
+  height: 25px;
+  line-height: 25px;
+  font-size: 17px;
+  background: #FFC107;
+  color: #ffffff;
+  font-weight: bold;
 }
 
 input:checked + label {
   color: green;
 }
 
-.size{
-  font-size:2em;
+.size {
+  font-size: 2em;
 }
 
-.size2{
-  font-size:1.5em;
+.size2 {
+  font-size: 1.5em;
 }
 
 th {
@@ -128,14 +129,14 @@ th {
   font-size: 16px;
   background: #e0edff;
   border-radius: 15px;
-}
 
-.balloon1:before {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -15px;
-  border: 15px solid transparent;
-  border-top: 15px solid #e0edff;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -15px;
+    border: 15px solid transparent;
+    border-top: 15px solid #e0edff;
+  }
 }
