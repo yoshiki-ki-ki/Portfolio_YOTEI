@@ -56,6 +56,7 @@ class ScheduleAnswersController < ApplicationController
 
   def answer
     @guest = Guest.find(params[:id])
+    @event = @guest.event
   end
 
   def answer_pass

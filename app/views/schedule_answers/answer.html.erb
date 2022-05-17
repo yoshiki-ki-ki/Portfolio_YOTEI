@@ -13,6 +13,6 @@
     <% end %>
   </div>
   <div class="col-6 mx-auto mb-5">
-    <%= link_to "もどる", :back, class: "btn btn-light btn-sm btn-block" %>
+    <%= link_to "もどる", schedule_path(token: @event.token), class: "btn btn-light btn-sm btn-block" %>
   </div>
 </div>
