@@ -27,10 +27,12 @@
           <%= event_schedule.candidate_time_start.strftime('%H:%M') %>
           ～
           <%= event_schedule.candidate_time_end.strftime('%H:%M') %>
-          <% if @event.host_id == current_host.id %>
-            <div class="col-7 mx-auto">
-              <%= link_to "参加者の回答を見る", host_event_schedule_path(event_schedule.id), class: "btn btn-light btn-sm btn-block" %>
-            </div>
+          <% if current_host.present? %>
+            <% if @event.host_id == current_host.id %>
+              <div class="col-7 mx-auto">
+                <%= link_to "参加者の回答を見る", host_event_schedule_path(event_schedule.id), class: "btn btn-light btn-sm btn-block" %>
+              </div>
+            <% end %>
           <% end %>
         </div>
       <% end %>
@@ -44,14 +46,16 @@
         <%= @event.decision_time_start.strftime('%H:%M') %>
         ～
         <%= @event.decision_time_end.strftime('%H:%M') %>
-        <% if @event.host_id == current_host.id %>
-          <%= form_with model: @event, url: host_path(@event.id), method: :patch do |f| %>
-            <%= f.hidden_field :dicision_date, :value => "" %>
-            <%= f.hidden_field :decision_time_start, :value => "" %>
-            <%= f.hidden_field :decision_time_end, :value => "" %>
-            <div class="col-7 mx-auto">
-              <%= f.submit "取り消し", "data-confirm" => "本当に取り消しますか？", class:"btn btn-light btn-sm btn-block" %>
-            </div>
+        <% if current_host.present? %>
+          <% if @event.host_id == current_host.id %>
+            <%= form_with model: @event, url: host_path(@event.id), method: :patch do |f| %>
+              <%= f.hidden_field :dicision_date, :value => "" %>
+              <%= f.hidden_field :decision_time_start, :value => "" %>
+              <%= f.hidden_field :decision_time_end, :value => "" %>
+              <div class="col-7 mx-auto">
+                <%= f.submit "取り消し", "data-confirm" => "本当に取り消しますか？", class:"btn btn-light btn-sm btn-block" %>
+              </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>
