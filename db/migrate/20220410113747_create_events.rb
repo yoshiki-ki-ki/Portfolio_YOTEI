@@ -8,7 +8,7 @@ class CreateEvents < ActiveRecord::Migration[6.1]
       ##予定時間
       t.string :schedule_time, null: false, default: ""
       ##コメント
-      t.text :comment, null: false, default: ""
+      t.text :comment, null: false
       ##決定日時（開始）
       t.datetime :decision_dete_start, null: false
       ##決定日時（終了）

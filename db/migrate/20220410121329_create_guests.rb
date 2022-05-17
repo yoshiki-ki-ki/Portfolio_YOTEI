@@ -8,7 +8,7 @@ class CreateGuests < ActiveRecord::Migration[6.1]
       ##パスワード
       t.string :password, null: false, default: ""
       ##主催者へのコメント
-      t.text :comment_to_host, null: false, default: ""
+      t.text :comment_to_host, null: false
       
       t.timestamps
     end
