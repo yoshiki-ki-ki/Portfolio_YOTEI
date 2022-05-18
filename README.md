@@ -60,11 +60,14 @@ ER図
 認証機能<br>
 - devise
 - devise-i18n
-- devise-i18n-views
+- devise-i18n-views<br>
+
 フォームの追加削除機能<br>
-- cocoon
+- cocoon<br>
+
 ページネーション機能<br>
-- kaminari
+- kaminari<br>
+
 QRコード作成機能<br>
 - rqrcode
 - chunky_png
